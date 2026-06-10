@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>404 - Page Not Found | Stackly</title>
+    <style>
+      :root {
+        --primary-blue-start: #065f46;
+        --primary-blue-end: #022c22;
+        --accent-orange: #d4af37;
+        --heading-color: #0f172a;
+        --input-border: #d1d5db;
+        --label-color: #6b7280;
+        --bg-light: #f8fafc;
+        --toggle-inactive: #f3f4f6;
+        --toggle-text-inactive: #4b5563;
+        --font-main: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      /* Modern Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-light);
+        min-height: 100vh; /* Changed to min-height for scroll flexibility if needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: var(--font-main);
+        overflow: hidden; /* Prevent body scroll while maintaining layout */
+        position: relative;
+      }
+
+      /* --- BACKGROUND MICRO-DESIGNS --- */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+          var(--input-border) 0.5px,
+          transparent 0.5px
+        );
+        background-size: 30px 30px;
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .bg-route {
+        position: absolute;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--primary-blue-start),
+          transparent
+        );
+        width: 200px;
+        opacity: 0.2;
+        z-index: 0;
+        animation: moveRoute 8s linear infinite;
+      }
+
+      @keyframes moveRoute {
+        0% {
+          transform: translateX(-250px) translateY(0);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(100vw) translateY(50px);
+          opacity: 0;
+        }
+      }
+
+      .node {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: var(--accent-orange);
+        border-radius: 50%;
+        opacity: 0.15;
+        z-index: 0;
+        animation: floatNode 10s ease-in-out infinite;
+      }
+
+      @keyframes floatNode {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(30px, -40px);
+        }
+      }
+
+      /* --- CONTENT --- */
+
+      .container {
+        text-align: center;
+        max-width: 800px;
+        width: 100%;
+        padding: 40px 20px; /* Added vertical padding for breathing room */
+        position: relative;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .oops-text {
+        color: var(--primary-blue-start);
+        font-size: clamp(40px, 8vw, 80px); /* Responsive font sizing */
+        font-weight: 900;
+        margin-bottom: 20px;
+        letter-spacing: -2px;
+        animation: float 4s ease-in-out infinite;
+        display: inline-block;
+      }
+
+      .graphic-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .digit {
+        font-size: clamp(
+          120px,
+          20vw,
+          280px
+        ); /* Fully responsive digit scaling */
+        font-weight: 900;
+        color: var(--heading-color);
+        line-height: 0.9;
+        display: flex;
+        align-items: center;
+        position: relative;
+        user-select: none;
+      }
+
+      .digit-left {
+        animation: slideInLeft 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          forwards;
+      }
+      .digit-right {
+        animation: slideInRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          forwards;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @keyframes slideInRight {
+        from {
+          transform: translateX(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes tireJiggle {
+        0%,
+        100% {
+          transform: scaleY(1);
+        }
+        50% {
+          transform: scaleY(0.97) translateY(2px);
+        }
+      }
+
+      .tire-wrapper {
+        width: clamp(100px, 22vw, 260px); /* Responsive tire scaling */
+        height: auto;
+        aspect-ratio: 1/1;
+        margin: 0 -5px;
+        z-index: 2;
+        filter: drop-shadow(0 15px 15px rgba(30, 91, 255, 0.15));
+        animation: tireJiggle 3s ease-in-out infinite;
+        transform-origin: bottom;
+        transition: transform 0.1s ease-out;
+      }
+
+      .tire-wrapper svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .shadow {
+        position: absolute;
+        bottom: -5px;
+        width: 80%;
+        height: 20px;
+        background: rgba(15, 23, 42, 0.1);
+        border-radius: 50%;
+        z-index: 1;
+        animation: shadowBreath 3s ease-in-out infinite;
+      }
+
+      @keyframes shadowBreath {
+        0%,
+        100% {
+          transform: scaleX(1);
+          opacity: 0.08;
+        }
+        50% {
+          transform: scaleX(1.1);
+          opacity: 0.12;
+        }
+      }
+
+      .error-description {
+        color: var(--label-color);
+        font-size: clamp(16px, 4vw, 28px);
+        text-transform: uppercase;
+        font-weight: 300;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+      }
+
+      .error-description strong {
+        color: var(--heading-color);
+        font-weight: 900;
+      }
+
+      .btn-home {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue-start),
+          var(--primary-blue-end)
+        );
+        color: #ffffff;
+        text-decoration: none;
+        padding: 16px 36px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(30, 91, 255, 0.3);
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-home::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transform: rotate(45deg);
+        transition: 0.5s;
+      }
+
+      .btn-home:hover::after {
+        left: 100%;
+      }
+      .btn-home:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(30, 91, 255, 0.4);
+      }
+
+      .brand-footer {
+        margin-top: 40px;
+        color: var(--label-color);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .brand-footer span {
+        color: var(--accent-orange);
+        font-weight: 700;
+      }
+
+      /* Mobile-Specific Refinement */
+      @media (max-height: 700px) {
+        .container {
+          padding: 20px 10px;
+        }
+        .oops-text {
+          margin-bottom: 10px;
+        }
+        .brand-footer {
+          margin-top: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Dynamic Background Micro-designs -->
+    <div
+      class="bg-route"
+      style="top: 20%; left: -10%; animation-delay: 0s"
+    ></div>
+    <div
+      class="bg-route"
+      style="top: 60%; left: -15%; animation-delay: 3s; width: 300px"
+    ></div>
+
+    <div class="node" style="top: 15%; left: 10%; animation-delay: 0s"></div>
+    <div
+      class="node"
+      style="
+        top: 25%;
+        left: 85%;
+        animation-delay: 2s;
+        background: var(--primary-blue-start);
+      "
+    ></div>
+    <div class="node" style="top: 75%; left: 15%; animation-delay: 4s"></div>
+
+    <div class="container" id="mainContainer">
+      <h1 class="oops-text">Oops!</h1>
+
+      <div class="graphic-container">
+        <div class="digit digit-left">4</div>
+
+        <div class="tire-wrapper">
+          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M150,20 C80,20 20,80 20,150 C20,180 25,210 40,235 L40,240 C40,255 10,260 10,265 L290,265 C290,260 260,255 260,240 L260,235 C275,210 280,180 280,150 C280,80 220,20 150,20 Z"
+              fill="#1e293b"
+            />
+            <path
+              d="M40,235 Q150,275 260,235 L260,240 C260,255 290,260 290,265 L10,265 C10,260 40,255 40,240 Z"
+              fill="#0f172a"
+            />
+            <circle cx="150" cy="145" r="105" fill="#334155" />
+            <circle cx="150" cy="145" r="95" fill="#1e293b" />
+            <circle cx="150" cy="145" r="85" fill="#94a3b8" />
+            <path
+              d="M150,70 L170,120 L220,120 L180,150 L200,200 L150,170 L100,200 L120,150 L80,120 L130,120 Z"
+              fill="#f1f5f9"
+            />
+            <circle cx="150" cy="145" r="20" fill="#0f172a" />
+            <circle cx="150" cy="145" r="5" fill="#000" />
+            <circle cx="150" cy="125" r="4" fill="#64748b" />
+            <circle cx="169" cy="139" r="4" fill="#64748b" />
+            <circle cx="162" cy="161" r="4" fill="#64748b" />
+            <circle cx="138" cy="161" r="4" fill="#64748b" />
+            <circle cx="131" cy="139" r="4" fill="#64748b" />
+          </svg>
+        </div>
+
+        <div class="digit digit-right">4</div>
+        <div class="shadow"></div>
+      </div>
+
+      <p class="error-description">
+        <strong>ERROR</strong> the requested page does not exist
+      </p>
+
+      <a href="./index.html" class="btn-home">BACK TO HOME</a>
+
+      <div class="brand-footer">logistics by <span>stackly.com</span></div>
+    </div>
+
+    <script>
+      window.addEventListener("load", () => {
+        const container = document.getElementById("mainContainer");
+        container.style.opacity = "1";
+
+        document.addEventListener("mousemove", (e) => {
+          if (window.innerWidth < 1024) return; // Disable parallax on mobile/small tablets
+          const tire = document.querySelector(".tire-wrapper");
+          const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+          const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+          tire.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+      });
+    </script>
+  </body>
+</html>

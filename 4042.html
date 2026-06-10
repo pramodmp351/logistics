@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>404 - Shipment Not Found | STACKLY</title>
+    <style>
+      :root {
+        --stackly-navy: #0b2f44;
+        --stackly-navy-dark: #071d2b;
+        --stackly-orange: #f27618;
+        --stackly-orange-hover: #ff5e3a;
+        --stackly-light-grey: #f5f5f5;
+        --stackly-border-grey: #e5e7eb;
+        --stackly-heading: #0f172a;
+        --stackly-para: #9ca3af;
+        --stackly-white: #ffffff;
+        --stackly-black: #000000;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body,
+      html {
+        height: 100%;
+        width: 100%;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        background: radial-gradient(
+          circle at center,
+          var(--stackly-navy) 0%,
+          var(--stackly-navy-dark) 100%
+        );
+        color: var(--stackly-white);
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Moving Background Lines */
+      .stk404-bg-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0.1;
+        pointer-events: none;
+      }
+
+      .stk404-line {
+        position: absolute;
+        background: var(--stackly-white);
+        height: 1px;
+        width: 100%;
+        top: var(--top);
+        animation: stk404-slide-line 10s linear infinite;
+      }
+
+      @keyframes stk404-slide-line {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      /* Main Container */
+      .stk404-container {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 24px;
+        max-width: 600px;
+        width: 100%;
+        margin: auto;
+      }
+
+      /* 404 Typography */
+      .stk404-glitch-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 5px;
+        animation: stk404-fade-up 0.8s ease-out forwards;
+      }
+
+      .stk404-big-text {
+        font-size: clamp(6rem, 25vw, 12rem);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -2px;
+        color: var(--stackly-white);
+        position: relative;
+      }
+
+      .stk404-big-text::after {
+        content: "";
+        position: absolute;
+        bottom: 10%;
+        left: 10%;
+        width: 80%;
+        height: clamp(6px, 1.5vw, 12px);
+        background: var(--stackly-orange);
+        z-index: -1;
+        border-radius: 4px;
+      }
+
+      /* Logistics Illustration */
+      .stk404-visual-area {
+        position: relative;
+        height: 100px;
+        margin: 10px auto 30px;
+        width: 100%;
+        max-width: 300px;
+        overflow: hidden;
+      }
+
+      .stk404-path {
+        position: absolute;
+        top: 60%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        border-top: 3px dotted var(--stackly-para);
+        opacity: 0.3;
+      }
+
+      .stk404-truck {
+        position: absolute;
+        top: 25px;
+        left: 0;
+        width: 70px;
+        height: auto;
+        animation: stk404-truck-move 5s ease-in-out infinite;
+      }
+
+      @keyframes stk404-truck-move {
+        0% {
+          transform: translateX(-20px);
+        }
+        50% {
+          transform: translateX(calc(100% + 20px));
+        }
+        50.01% {
+          transform: translateX(calc(100% + 20px)) scaleX(-1);
+        }
+        100% {
+          transform: translateX(-20px) scaleX(-1);
+        }
+      }
+
+      /* Text Content */
+      .stk404-subheading {
+        font-size: clamp(1.5rem, 5vw, 2.25rem);
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--stackly-white);
+        line-height: 1.2;
+      }
+
+      .stk404-description {
+        font-size: clamp(0.95rem, 3vw, 1.1rem);
+        color: var(--stackly-para);
+        margin-bottom: 40px;
+        line-height: 1.5;
+        padding: 0 10px;
+      }
+
+      /* Buttons */
+      .stk404-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .stk404-btn {
+        padding: 16px 28px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        border: none;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .stk404-btn:active {
+        transform: scale(0.98);
+      }
+
+      .stk404-btn-primary {
+        background-color: var(--stackly-orange);
+        color: var(--stackly-white);
+      }
+
+      .stk404-btn-secondary {
+        background-color: transparent;
+        color: var(--stackly-white);
+        border: 2px solid var(--stackly-white);
+      }
+
+      /* Countdown */
+      .stk404-countdown {
+        margin-top: 32px;
+        font-size: 0.85rem;
+        color: var(--stackly-para);
+        font-style: italic;
+      }
+
+      /* Keyframes */
+      @keyframes stk404-fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Tablet & Desktop Hover Effects */
+      @media (min-width: 769px) {
+        .stk404-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .stk404-btn-primary:hover {
+          background-color: var(--stackly-orange-hover);
+        }
+        .stk404-btn-secondary:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      /* Mobile Specific Adjustments */
+      @media (max-width: 600px) {
+        .stk404-actions {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .stk404-btn {
+          width: 100%;
+          padding: 18px; /* Larger touch target */
+        }
+        .stk404-container {
+          padding: 20px;
+        }
+        .stk404-description {
+          margin-bottom: 30px;
+        }
+      }
+
+      /* Fix for very small/short devices */
+      @media (max-height: 500px) {
+        body {
+          align-items: flex-start;
+        }
+        .stk404-container {
+          padding: 40px 20px;
+        }
+        .stk404-visual-area {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stk404-bg-lines">
+      <div class="stk404-line" style="--top: 20%; animation-delay: 0s"></div>
+      <div class="stk404-line" style="--top: 50%; animation-delay: -3.5s"></div>
+      <div class="stk404-line" style="--top: 80%; animation-delay: -7s"></div>
+    </div>
+
+    <div class="stk404-container">
+      <div class="stk404-glitch-wrapper">
+        <h1 class="stk404-big-text">404</h1>
+      </div>
+
+      <div class="stk404-visual-area">
+        <div class="stk404-path"></div>
+        <svg
+          class="stk404-truck"
+          viewBox="0 0 100 50"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="10" y="10" width="60" height="25" rx="2" fill="#ffffff" />
+          <path d="M70 15 L85 15 L92 25 L92 35 L70 35 Z" fill="#f27618" />
+          <circle cx="25" cy="40" r="5" fill="#000" />
+          <circle cx="75" cy="40" r="5" fill="#000" />
+          <rect x="72" y="18" width="10" height="8" fill="#0b2f44" rx="1" />
+        </svg>
+      </div>
+
+      <h2 class="stk404-subheading">Shipment Not Found</h2>
+      <p class="stk404-description">
+        The page you’re looking for is currently off-route. Our dispatchers are
+        working to get you back on track.
+      </p>
+
+      <div class="stk404-actions">
+        <a href="./home2.html" class="stk404-btn stk404-btn-primary"
+          >Back to Home</a
+        >
+        <a href="./contact2.html" class="stk404-btn stk404-btn-secondary"
+          >Contact Support</a
+        >
+      </div>
+
+      <div class="stk404-countdown">
+        Rerouting in <span id="stk404-timer">10</span>s
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let timeLeft = 10;
+        const timerDisplay = document.getElementById("stk404-timer");
+
+        const countdown = setInterval(() => {
+          timeLeft--;
+          if (timerDisplay) {
+            timerDisplay.textContent = timeLeft;
+          }
+
+          if (timeLeft <= 0) {
+            clearInterval(countdown);
+            // Actual redirect logic:
+            // window.location.href = "/";
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

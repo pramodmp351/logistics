@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stackly | Supply Chain Management</title>
+    <!-- GSAP for cinematic animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- GSAP TextPlugin for the typing effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <style>
+      :root {
+        --primary-blue: #1e5bff;
+        --deep-blue: #0f3dbe;
+        --dark-blue: #0b2f8a;
+        --hover-blue: #1746c8;
+        --light-bg: #f5f6fa;
+        --card-bg: #ffffff;
+        --text-dark: #1a1a1a;
+        --text-gray: #555555;
+        --accent-yellow: #ffc107;
+        --white: #ffffff;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        --input-border: #e0e0e0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      body {
+        background-color: var(--light-bg);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .main-wrapper {
+        perspective: 2000px;
+        width: 100%;
+        max-width: 900px;
+      }
+
+      .container {
+        width: 100%;
+        background: var(--card-bg);
+        border-radius: 20px;
+        display: flex;
+        min-height: 580px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* LEFT SIDE: Brand Section */
+      .brand-section {
+        flex: 1;
+        background-color: var(--primary-blue);
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 40px;
+        text-align: center;
+        position: relative;
+        z-index: 5;
+      }
+
+      /* PRECISE DOG-EAR FOLD */
+      .fold-corner {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(
+          135deg,
+          transparent 50%,
+          var(--deep-blue) 50%
+        );
+        z-index: 7;
+      }
+
+      .fold-shadow-overlay {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(
+          circle at bottom right,
+          rgba(0, 0, 0, 0.2) 0%,
+          transparent 70%
+        );
+        z-index: 4;
+      }
+
+      .brand-content-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .brand-section .small-text {
+        font-size: 1.15rem;
+        margin-bottom: 5px;
+        font-weight: 300;
+        opacity: 0.95;
+        height: 1.5rem;
+      }
+
+      .brand-section h1 {
+        font-size: 2.1rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        letter-spacing: -0.5px;
+        min-height: 3.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: lowercase;
+      }
+
+      .logo-wrapper {
+        width: 105px;
+        height: 105px;
+        background: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 25px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo-wrapper svg {
+        width: 45px;
+        height: 45px;
+        fill: var(--primary-blue);
+      }
+
+      .brand-name {
+        font-size: 1.7rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      .brand-footer {
+        position: absolute;
+        bottom: 25px;
+        width: 100%;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        opacity: 0.85;
+        text-align: center;
+      }
+
+      /* RIGHT SIDE: Form Section */
+      .form-section {
+        flex: 1.15;
+        background-color: var(--card-bg);
+        position: relative;
+        transform-origin: left center;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        padding: 100px 55px 40px;
+      }
+
+      .ribbon {
+        position: absolute;
+        top: 35px;
+        left: -15px;
+        background: var(--primary-blue);
+        color: white;
+        padding: 12px 35px;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.12);
+        z-index: 11;
+      }
+
+      .ribbon::before {
+        content: "";
+        position: absolute;
+        bottom: -9px;
+        left: 0;
+        border-left: 9px solid transparent;
+        border-top: 9px solid var(--dark-blue);
+      }
+
+      .ribbon::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -15px;
+        border-width: 21.5px 15px 21.5px 0;
+        border-style: solid;
+        border-color: var(--primary-blue) transparent var(--primary-blue)
+          var(--primary-blue);
+      }
+
+      .form-container {
+        width: 100%;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 17px 22px;
+        border: 1px solid var(--input-border);
+        background: #f9fafb;
+        outline: none;
+        color: var(--text-dark);
+        font-size: 11.5px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Hover Effect */
+      .input-group input:hover {
+        background: #f0f4ff;
+        border-color: #cbd5e1;
+        transform: translateY(-1px);
+      }
+
+      /* Focus Underline Animation */
+      .input-group::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-blue);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 2;
+      }
+
+      .input-group:focus-within::after {
+        width: 100%;
+        left: 0;
+      }
+
+      .input-group input:focus {
+        background: var(--white);
+        border-color: transparent;
+        box-shadow: 0 4px 12px rgba(30, 91, 255, 0.08);
+      }
+
+      .btn-main {
+        width: 100%;
+        padding: 17px;
+        background-color: var(--primary-blue);
+        color: white;
+        border: none;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        cursor: pointer;
+        margin-top: 25px;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 0 var(--dark-blue);
+      }
+
+      .btn-main:hover {
+        background-color: var(--hover-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 0 var(--dark-blue);
+      }
+
+      .btn-main:active {
+        transform: translateY(2px);
+        box-shadow: 0 1px 0 var(--dark-blue);
+      }
+
+      .helper-links {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 10.5px;
+        color: var(--text-gray);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        line-height: 1.8;
+      }
+
+      .link-item {
+        color: var(--primary-blue);
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      .link-item::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--primary-blue);
+        transition: width 0.3s;
+      }
+
+      .link-item:hover::after {
+        width: 100%;
+      }
+
+      .form-content {
+        display: none;
+      }
+
+      .form-content.active {
+        display: block;
+      }
+
+      /* REFINED MOBILE VIEW */
+      @media (max-width: 768px) {
+        body {
+          overflow-y: auto;
+          height: auto;
+          padding: 15px;
+        }
+        .container {
+          flex-direction: column;
+          min-height: auto;
+          border-radius: 15px;
+        }
+        .brand-section {
+          padding: 60px 20px 80px;
+        }
+        .fold-corner,
+        .fold-shadow-overlay {
+          display: none;
+        }
+        .brand-section h1 {
+          font-size: 1.8rem;
+          min-height: auto;
+          margin-bottom: 25px;
+        }
+        .logo-wrapper {
+          width: 95px;
+          height: 95px;
+          margin-bottom: 15px;
+        }
+        .form-section {
+          padding: 70px 30px 40px;
+          transform-origin: top center;
+        }
+        .ribbon {
+          left: 50%;
+          transform: translateX(-50%);
+          top: 20px;
+          width: auto;
+          min-width: 200px;
+          padding: 12px 40px;
+          font-size: 12px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+          border-radius: 4px;
+          text-align: center;
+        }
+        .ribbon::before {
+          left: -10px;
+          top: 6px;
+          bottom: auto;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-right: 10px solid var(--dark-blue);
+          border-left: none;
+        }
+        .ribbon::after {
+          right: -10px;
+          top: 6px;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-left: 10px solid var(--dark-blue);
+          border-right: none;
+          border-width: 10px;
+        }
+        .brand-footer {
+          bottom: 20px;
+          font-size: 9px;
+        }
+        .helper-links {
+          margin-top: 35px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="container" id="mainContainer">
+        <div class="fold-shadow-overlay"></div>
+
+        <!-- LEFT: Branding Section -->
+        <div class="brand-section" id="brandSide">
+          <div class="brand-content-box" id="brandContent">
+            <p class="small-text" id="brandSmall"></p>
+            <h1 id="brandHeading"></h1>
+
+            <div class="logo-wrapper" id="logoAnim">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6c1.4 0 2.5 1.1 2.5 2.5V11c.8 0 1.5.7 1.5 1.5v4c0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5v-4c0-.8.7-1.5 1.5-1.5V9.5C9.5 8.1 10.6 7 12 7zm0 1c-.8 0-1.5.7-1.5 1.5V11h3V9.5c0-.8-.7-1.5-1.5-1.5z"
+                />
+              </svg>
+            </div>
+
+            <p class="brand-name">STACKLY</p>
+          </div>
+
+          <div class="fold-corner"></div>
+
+          <div class="brand-footer">SECURE LOGISTICS | ACCOUNT CENTER</div>
+        </div>
+
+        <!-- RIGHT: Form Section -->
+        <div class="form-section" id="formSide">
+          <div class="ribbon" id="ribbonText">Login to Account</div>
+          <form action="./404.html">
+            <div class="form-container">
+              <div id="loginForm" class="form-content active">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    placeholder="USERNAME..."
+                    required
+                    onfocus="animateInput(this)"
+                    onblur="resetInput(this)"
+                  />
+                </div>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    placeholder="PASSWORD..."
+                    required
+                    onfocus="animateInput(this)"
+                    onblur="resetInput(this)"
+                  />
+                </div>
+                <button class="btn-main">Login</button>
+
+                <div class="helper-links">
+                  <p>
+                    Forgot password or username,
+                    <a href="./404.html"
+                      ><span class="link-item">Click Here.</span></a
+                    >
+                  </p>
+                  <p style="margin-top: 10px">
+                    Don't have an account?
+                    <span class="link-item" onclick="toggleForm('register')"
+                      >Create Now.</span
+                    >
+                  </p>
+                </div>
+              </div>
+  </form>
+  <form action="./404.html">
+              <div id="registerForm" class="form-content">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    placeholder="NAME..."
+                    required
+                    onfocus="animateInput(this)"
+                    onblur="resetInput(this)"
+                  />
+                </div>
+                <div class="input-group">
+                  <input
+                    type="email"
+                    placeholder="EMAIL..."
+                    required
+                    onfocus="animateInput(this)"
+                    onblur="resetInput(this)"
+                  />
+                </div>
+                <div class="input-group">
+                  <input
+                    type="tel"
+                    placeholder="PHONE NUMBER..."
+                    required
+                    onfocus="animateInput(this)"
+                    onblur="resetInput(this)"
+                  />
+                </div>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    placeholder="PASSWORD..."
+                    required
+                    onfocus="animateInput(this)"
+                    onblur="resetInput(this)"
+                  />
+                </div>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    placeholder="RE-ENTER PASSWORD..."
+                    required
+                    onfocus="animateInput(this)"
+                    onblur="resetInput(this)"
+                  />
+                </div>
+                <button class="btn-main">Sign Up</button>
+
+                <div class="helper-links">
+                  <p>
+                    Already have an account?
+                    <span class="link-item" onclick="toggleForm('login')"
+                      >Login</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      gsap.registerPlugin(TextPlugin);
+
+      function animateInput(el) {
+        gsap.to(el, { duration: 0.3, scale: 1.02, ease: "power2.out" });
+      }
+
+      function resetInput(el) {
+        gsap.to(el, { duration: 0.3, scale: 1, ease: "power2.out" });
+      }
+
+      function typeReveal(smallTxt, headingTxt) {
+        const tl = gsap.timeline();
+        tl.to("#brandSmall", {
+          duration: 0.6,
+          text: smallTxt,
+          ease: "none",
+        }).to(
+          "#brandHeading",
+          { duration: 1.0, text: headingTxt, ease: "none" },
+          "-=0.1",
+        );
+        return tl;
+      }
+
+      window.addEventListener("load", () => {
+        const tl = gsap.timeline();
+        tl.from("#mainContainer", {
+          duration: 1,
+          y: 40,
+          opacity: 0,
+          ease: "power4.out",
+        })
+          .from("#brandSide", { duration: 0.8, x: -60, opacity: 0 }, "-=0.6")
+          .from("#formSide", { duration: 0.8, x: 60, opacity: 0 }, "-=0.8")
+          .from(
+            "#logoAnim",
+            { duration: 0.6, scale: 0, ease: "back.out(1.7)" },
+            "-=0.4",
+          )
+          .add(typeReveal("Hello,", "welcome to!"));
+      });
+
+      let isAnimating = false;
+
+      function toggleForm(type) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const formSide = document.querySelector("#formSide");
+        const loginForm = document.querySelector("#loginForm");
+        const registerForm = document.querySelector("#registerForm");
+        const ribbonText = document.querySelector("#ribbonText");
+
+        const isMobile = window.innerWidth <= 768;
+
+        gsap.to(formSide, {
+          duration: 0.45,
+          rotationY: isMobile ? 0 : -95,
+          rotationX: isMobile ? -95 : 0,
+          opacity: 0,
+          ease: "power2.in",
+          onComplete: () => {
+            gsap.set("#brandSmall, #brandHeading", { text: "" });
+
+            if (type === "register") {
+              loginForm.classList.remove("active");
+              registerForm.classList.add("active");
+              ribbonText.innerText = "Create Account";
+              typeReveal("Join us,", "create your account!");
+            } else {
+              registerForm.classList.remove("active");
+              loginForm.classList.add("active");
+              ribbonText.innerText = "Login to Account";
+              typeReveal("Hello,", "welcome to!");
+            }
+
+            gsap.fromTo(
+              formSide,
+              {
+                rotationY: isMobile ? 0 : 95,
+                rotationX: isMobile ? 95 : 0,
+                opacity: 0,
+              },
+              {
+                duration: 0.45,
+                rotationY: 0,
+                rotationX: 0,
+                opacity: 1,
+                ease: "power2.out",
+                onComplete: () => {
+                  isAnimating = false;
+                },
+              },
+            );
+          },
+        });
+      }
+    </script>
+    <script src="./login.js"></script>
+  </body>
+</html>

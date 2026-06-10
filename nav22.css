@@ -1,0 +1,298 @@
+:root {
+  --stackly-navy: #0b2f44;
+  --stackly-orange: #f27618;
+  --stackly-orange-hover: #ff5e3a;
+  --stackly-light-grey: #f5f5f5;
+  --stackly-border-grey: #e5e7eb;
+  --stackly-heading: #0f172a;
+  --stackly-para: #9ca3af;
+  --stackly-white: #ffffff;
+  --stackly-black: #000000;
+}
+
+/* Header Base */
+.stkNavStrict-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: var(--stackly-navy);
+  border-bottom: 1px solid var(--stackly-border-grey);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+}
+
+.stkNavStrict-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.stkNavStrict-logo img {
+  display: block;
+  max-height: 60px;
+  width: auto;
+}
+
+/* Desktop Menu */
+.stkNavStrict-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 36px; /* Increased gap for larger fonts */
+  align-items: center;
+}
+
+.stkNavStrict-link {
+  text-decoration: none;
+  color: var(--stackly-white);
+  font-weight: 600;
+  font-size: 16px; /* Increased from 14px */
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stkNavStrict-link:hover {
+  color: var(--stackly-orange);
+}
+
+/* Desktop Dropdown */
+.stkNavStrict-hasDropdown {
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.stkNavStrict-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px; /* Increased width */
+  background: var(--stackly-white);
+  border: 1px solid var(--stackly-border-grey);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 12px 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s;
+  pointer-events: none;
+}
+
+.stkNavStrict-hasDropdown:hover .stkNavStrict-dropdown,
+.stkNavStrict-hasDropdown.stkNavStrict-active .stkNavStrict-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.stkNavStrict-dropdownLink {
+  display: block;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: var(--stackly-heading);
+  font-size: 16px; /* Increased from 14px */
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.stkNavStrict-dropdownLink:hover {
+  background: var(--stackly-light-grey);
+  color: var(--stackly-orange);
+}
+
+.stkNavStrict-chevron {
+  transition: transform 0.2s ease;
+}
+
+.stkNavStrict-hasDropdown:hover .stkNavStrict-chevron,
+.stkNavStrict-hasDropdown.stkNavStrict-active .stkNavStrict-chevron {
+  transform: rotate(180deg);
+}
+
+/* Hamburger Toggle */
+.stkNavStrict-toggle {
+  display: none;
+  width: 30px;
+  height: 22px;
+  position: relative;
+  z-index: 1100;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.stkNavStrict-toggle span {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--stackly-light-grey);
+  left: 0;
+  transition:
+    transform 0.4s ease,
+    opacity 0.3s ease,
+    background 0.3s ease;
+  transform-origin: center;
+}
+
+.stkNavStrict-toggle span:nth-child(1) {
+  top: 0;
+}
+.stkNavStrict-toggle span:nth-child(2) {
+  top: 10px;
+}
+.stkNavStrict-toggle span:nth-child(3) {
+  bottom: 0;
+}
+
+.stkNavStrict-open .stkNavStrict-toggle span {
+  background: var(--stackly-white);
+}
+
+.stkNavStrict-open .stkNavStrict-toggle span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.stkNavStrict-open .stkNavStrict-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.stkNavStrict-open .stkNavStrict-toggle span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Mobile Overlay */
+.stkNavStrict-mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--stackly-navy);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  pointer-events: none;
+}
+
+.stkNavStrict-open .stkNavStrict-mobileOverlay {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.stkNavStrict-mobileNav {
+  width: 100%;
+  padding: 100px 40px;
+}
+
+.stkNavStrict-mobileMenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.stkNavStrict-mobileLink {
+  color: var(--stackly-white);
+  text-decoration: none;
+  font-size: 32px; /* Increased from 28px */
+  font-weight: 700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: color 0.2s ease;
+}
+
+.stkNavStrict-mobileLink:hover {
+  color: var(--stackly-orange);
+}
+
+.stkNavStrict-mobileCollapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.stkNavStrict-mobileItem.stkNavStrict-expanded .stkNavStrict-mobileCollapse {
+  max-height: 300px;
+}
+
+.stkNavStrict-mobileItem.stkNavStrict-expanded .stkNavStrict-chevron {
+  transform: rotate(180deg);
+}
+
+.stkNavStrict-mobileSubMenu {
+  list-style: none;
+  padding: 24px 0 0 0;
+  margin: 0;
+  text-align: center;
+}
+
+.stkNavStrict-mobileSubLink {
+  display: block;
+  color: var(--stackly-para);
+  text-decoration: none;
+  font-size: 24px; /* Increased from 20px */
+  padding: 12px 0;
+  transition: color 0.2s ease;
+}
+
+.stkNavStrict-mobileSubLink:hover {
+  color: var(--stackly-white);
+}
+
+/* Responsiveness */
+@media (max-width: 991.98px) {
+  .stkNavStrict-desktopNav {
+    display: none;
+  }
+  .stkNavStrict-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .stkNavStrict-mobileLink {
+    font-size: 28px; /* Slightly smaller for mobile phones but still larger than previous */
+  }
+  .stkNavStrict-mobileNav {
+    padding: 80px 20px;
+  }
+}

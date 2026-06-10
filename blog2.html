@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>STACKLY | BLOG GRID</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="./blog2.css" />
+    <link rel="stylesheet" href="./nav22.css" />
+    <link rel="stylesheet" href="./footer22.css" />
+  </head>
+  <body>
+    <header class="stkNavStrict-header">
+      <div class="stkNavStrict-container">
+        <!-- Logo -->
+        <a href="./home2.html" class="stkNavStrict-logo">
+          <img
+            src="./files/logooo.webp"
+            alt="Stackly Logo"
+            onerror="
+              this.src = 'https://placehold.co/150x40/0b2f44/ffffff?text=LOGO'
+            "
+          />
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="stkNavStrict-desktopNav">
+          <ul class="stkNavStrict-menu">
+            <li
+              class="stkNavStrict-item stkNavStrict-hasDropdown"
+              id="stkHome2Dropdown"
+            >
+              <button
+                class="stkNavStrict-link stkNavStrict-dropTrigger"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                HOME2
+                <svg
+                  class="stkNavStrict-chevron"
+                  width="12"
+                  height="8"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L5 5L9 1"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <ul class="stkNavStrict-dropdown">
+                <li>
+                  <a href="./home2.html" class="stkNavStrict-dropdownLink"
+                    >HOME2</a
+                  >
+                </li>
+                <li>
+                  <a href="./index.html" class="stkNavStrict-dropdownLink"
+                    >HOME1</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="stkNavStrict-item">
+              <a href="./service2.html" class="stkNavStrict-link">SERVICES</a>
+            </li>
+            <li class="stkNavStrict-item">
+              <a href="./about2.html" class="stkNavStrict-link">ABOUT</a>
+            </li>
+            <li class="stkNavStrict-item">
+              <a href="./blog2.html" class="stkNavStrict-link">BLOG</a>
+            </li>
+            <li class="stkNavStrict-item">
+              <a href="./contact2.html" class="stkNavStrict-link">CONTACT</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Hamburger Toggle -->
+        <button
+          class="stkNavStrict-toggle"
+          aria-label="Toggle Menu"
+          aria-controls="stkMobileMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Overlay -->
+      <div class="stkNavStrict-mobileOverlay" id="stkMobileMenu">
+        <nav class="stkNavStrict-mobileNav">
+          <ul class="stkNavStrict-mobileMenu">
+            <li class="stkNavStrict-mobileItem stkNavStrict-mobileHasDropdown">
+              <button
+                class="stkNavStrict-mobileLink stkNavStrict-mobileDropTrigger"
+              >
+                HOME2
+                <svg
+                  class="stkNavStrict-chevron"
+                  width="20"
+                  height="12"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                >
+                  <path
+                    d="M1 1L5 5L9 1"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="stkNavStrict-mobileCollapse">
+                <ul class="stkNavStrict-mobileSubMenu">
+                  <li>
+                    <a href="./home2.html" class="stkNavStrict-mobileSubLink"
+                      >HOME2</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./index.html" class="stkNavStrict-mobileSubLink"
+                      >HOME1</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="stkNavStrict-mobileItem">
+              <a href="./service2.html" class="stkNavStrict-mobileLink"
+                >SERVICES</a
+              >
+            </li>
+            <li class="stkNavStrict-mobileItem">
+              <a href="./about2.html" class="stkNavStrict-mobileLink">ABOUT</a>
+            </li>
+            <li class="stkNavStrict-mobileItem">
+              <a href="./blog2.html" class="stkNavStrict-mobileLink">BLOG</a>
+            </li>
+            <li class="stkNavStrict-mobileItem">
+              <a href="./contact2.html" class="stkNavStrict-mobileLink"
+                >CONTACT</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- HERO SECTION -->
+    <section class="stackly-blog-hero">
+      <div class="stackly-blog-hero-bg"></div>
+      <div class="stackly-blog-hero-overlay"></div>
+
+      <div class="stackly-blog-hero-container">
+        <h1 class="stackly-blog-hero-title">BLOGS</h1>
+        <div class="stackly-blog-breadcrumb">
+          <a href="./home2.html" class="stackly-blog-breadcrumb-home">Home</a>
+          <div class="stackly-blog-breadcrumb-sep"></div>
+          <span>Our Blogs</span>
+        </div>
+      </div>
+
+      <div class="stackly-blog-hero-visuals">
+        <img
+          src="https://raw.githubusercontent.com/stackly-logistics/assets/main/globe-network.png"
+          class="hero-img globe"
+          alt=""
+        />
+        <img
+          src="https://raw.githubusercontent.com/stackly-logistics/assets/main/hero-truck.png"
+          class="hero-img truck-front"
+          alt=""
+        />
+      </div>
+
+      <div class="hero-accent"></div>
+    </section>
+
+    <!-- MAIN SECTION -->
+    <section class="stackly-blog-main-section">
+      <div class="stackly-blog-container">
+        <!-- POSTS -->
+        <div class="stackly-blog-list">
+          <!-- POST 1 -->
+          <article class="stackly-blog-card">
+            <div class="stackly-blog-card-image-wrap">
+              <div class="stackly-blog-date-badge">
+                <span>17</span><small>Mar</small>
+              </div>
+              <img src="./files/blog1.webp" alt="Logistics Tanker" />
+            </div>
+            <div class="stackly-blog-card-content">
+              <div class="stackly-blog-meta">
+                <div class="stackly-blog-meta-item">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
+                  By Admin
+                </div>
+                <div class="stackly-blog-meta-item">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                    />
+                  </svg>
+                  0 Comments
+                </div>
+              </div>
+              <h2 class="stackly-blog-card-title">
+                The Surfing Man Will Blow Your Mind
+              </h2>
+              <p class="stackly-blog-excerpt">
+                Pellentesque egestas rutrum nibh facilisis ultrices. Phasellus
+                in magna ut orci malesuada the sollicitudin. Aenean faucibus
+                scelerisque convallis. Quisque interdum mauris id nunc molestie
+                tincidunt erat gravida.
+              </p>
+              <a href="./4042.html" class="stackly-blog-explore-btn"
+                >Explore More &nbsp; →</a
+              >
+            </div>
+          </article>
+
+          <!-- POST 2 -->
+          <article class="stackly-blog-card">
+            <div class="stackly-blog-card-image-wrap">
+              <div class="stackly-blog-date-badge">
+                <span>14</span><small>Apr</small>
+              </div>
+              <img src="./files/blog2.webp" alt="Business Meeting" />
+            </div>
+            <div class="stackly-blog-card-content">
+              <div class="stackly-blog-meta">
+                <div class="stackly-blog-meta-item">By Admin</div>
+                <div class="stackly-blog-meta-item">0 Comments</div>
+              </div>
+              <h2 class="stackly-blog-card-title">
+                Supervisor Disapproved of Latest Work
+              </h2>
+              <p class="stackly-blog-excerpt">
+                Pellentesque egestas rutrum nibh facilisis ultrices. Phasellus
+                in magna ut orci malesuada the sollicitudin. Aenean faucibus
+                scelerisque convallis. Quisque interdum mauris id nunc molestie
+                tincidunt erat gravida.
+              </p>
+              <a href="./4042.html" class="stackly-blog-explore-btn"
+                >Explore More &nbsp; →</a
+              >
+            </div>
+          </article>
+
+          <!-- POST 3 -->
+          <article class="stackly-blog-card">
+            <div class="stackly-blog-card-image-wrap">
+              <div class="stackly-blog-date-badge">
+                <span>27</span><small>Feb</small>
+              </div>
+              <img src="./files/blog3.webp" alt="Logistics Center" />
+            </div>
+            <div class="stackly-blog-card-content">
+              <div class="stackly-blog-meta">
+                <div class="stackly-blog-meta-item">By Admin</div>
+                <div class="stackly-blog-meta-item">0 Comments</div>
+              </div>
+              <h2 class="stackly-blog-card-title">
+                Modern Supply Chain Integration Tips
+              </h2>
+              <p class="stackly-blog-excerpt">
+                Pellentesque egestas rutrum nibh facilisis ultrices. Phasellus
+                in magna ut orci malesuada the sollicitudin. Aenean faucibus
+                scelerisque convallis.
+              </p>
+              <a href="./4042.html" class="stackly-blog-explore-btn"
+                >Explore More &nbsp; →</a
+              >
+            </div>
+          </article>
+
+          <div class="stackly-blog-pagination">
+            <a href="./4042.html" class="stackly-blog-page-btn">Previous</a>
+            <a href="./4042.html" class="stackly-blog-page-btn active">1</a>
+            <a href="./4042.html" class="stackly-blog-page-btn">2</a>
+            <a href="./4042.html" class="stackly-blog-page-btn">3</a>
+            <a href="./4042.html" class="stackly-blog-page-btn">Next</a>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="stackly-blog-sidebar">
+          <!-- Search Widget -->
+          <div class="stackly-blog-sidebar-widget">
+            <h3 class="stackly-blog-widget-title">Search</h3>
+            <form
+              class="stackly-blog-search-form"
+              onsubmit="event.preventDefault()"
+            >
+              <input type="text" placeholder="Search here" />
+              <button type="submit" class="stackly-blog-search-btn">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Categories Widget -->
+          <div class="stackly-blog-sidebar-widget">
+            <h3 class="stackly-blog-widget-title">Categories</h3>
+            <div class="stackly-blog-category-list">
+              <a href="./4042.html" class="stackly-blog-category-link"
+                >Air Freight <span>(7)</span></a
+              >
+              <a href="./4042.html" class="stackly-blog-category-link"
+                >Road Freight <span>(4)</span></a
+              >
+              <a href="./4042.html" class="stackly-blog-category-link"
+                >Rail Freight <span>(5)</span></a
+              >
+              <a href="./4042.html" class="stackly-blog-category-link"
+                >Sea Transport <span>(3)</span></a
+              >
+            </div>
+          </div>
+
+          <!-- Recent Posts Widget -->
+          <div class="stackly-blog-sidebar-widget">
+            <h3 class="stackly-blog-widget-title">Recent Post</h3>
+            <div class="stackly-blog-recent-post">
+              <div class="stackly-blog-recent-thumb">
+                <img src="./files/about1.webp" alt="" />
+              </div>
+              <div class="stackly-blog-recent-info">
+                <span class="date">17 Mar, 2025</span>
+                <a href="./4042.html" class="title"
+                  >There are many variations of passages</a
+                >
+              </div>
+            </div>
+            <div class="stackly-blog-recent-post">
+              <div class="stackly-blog-recent-thumb">
+                <img src="./files/about2.webp" alt="" />
+              </div>
+              <div class="stackly-blog-recent-info">
+                <span class="date">14 Dec, 2025</span>
+                <a href="./4042.html" class="title"
+                  >Global Logistics Trends For Future</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Tags Widget -->
+          <div class="stackly-blog-sidebar-widget">
+            <h3 class="stackly-blog-widget-title">Tags</h3>
+            <div class="stackly-blog-tags-container">
+              <a href="./4042.html" class="stackly-blog-tag">Logistics</a>
+              <a href="./4042.html" class="stackly-blog-tag">Transport</a>
+              <a href="./4042.html" class="stackly-blog-tag">Delivery</a>
+              <a href="./4042.html" class="stackly-blog-tag">Services</a>
+              <a href="./4042.html" class="stackly-blog-tag">Air</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <footer class="stkExactFoot-wrapper">
+      <!-- Newsletter Section -->
+      <div class="stkExactFoot-newsletter-card">
+        <div class="stkExactFoot-newsletter-img-container">
+          <img
+            src="./files/footer.webp"
+            alt="Delivery Man"
+            class="stkExactFoot-newsletter-img"
+            onerror="this.parentElement.style.display = 'none'"
+          />
+        </div>
+        <div class="stkExactFoot-newsletter-content">
+          <div class="stkExactFoot-newsletter-label">
+            Subscribe Our Newsletter
+          </div>
+          <h2 class="stkExactFoot-newsletter-heading">
+            Coverage That Protects Your World!
+          </h2>
+          <div class="stkExactFoot-newsletter-form">
+            <input
+              type="email"
+              class="stkExactFoot-newsletter-input"
+              placeholder="Type Your Email"
+            />
+            <button class="stkExactFoot-newsletter-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Footer Body -->
+      <div class="stkExactFoot-body">
+        <div class="stkExactFoot-container">
+          <!-- BRAND LOGO IMAGE -->
+          <div class="stkExactFoot-logo-container">
+            <a href="./home2.html"
+              ><img
+                src="./files/logooo.webp"
+                alt="Stackly Logo"
+                class="stkExactFoot-brand-img"
+            /></a>
+          </div>
+
+          <div class="stkExactFoot-social-row">
+            <div class="stkExactFoot-social-icon">
+              <a href="./404.html">
+                <svg viewBox="0 0 320 512">
+                  <path
+                    d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                  /></svg
+              ></a>
+            </div>
+            <div class="stkExactFoot-social-icon">
+              <a href="./404.html">
+                <svg viewBox="0 0 448 512">
+                  <path
+                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6-29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                  /></svg
+              ></a>
+            </div>
+            <div class="stkExactFoot-social-icon">
+              <a href="./404.html"
+                ><svg viewBox="0 0 512 512">
+                  <path
+                    d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.952 51.654 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                  /></svg
+              ></a>
+            </div>
+            <div class="stkExactFoot-social-icon">
+              <a href="./404.html">
+                <svg viewBox="0 0 448 512">
+                  <path
+                    d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+                  /></svg
+              ></a>
+            </div>
+          </div>
+
+          <div class="stkExactFoot-contact-row">
+            <div class="stkExactFoot-contact-item">
+              <div class="stkExactFoot-contact-icon">
+                <svg viewBox="0 0 576 512">
+                  <path
+                    d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 23a32.1 32.1 0 0 0-44.94 0L4.4 251.47a12.19 12.19 0 0 0-1.6 17l15.2 18.5a12.19 12.19 0 0 0 17 1.6l245-201.7a12.19 12.19 0 0 1 15.3 0l245 201.7a12.19 12.19 0 0 0 17-1.6l15.2-18.5a12.19 12.19 0 0 0-1.7-17.1z"
+                  />
+                </svg>
+              </div>
+              <div class="stkExactFoot-contact-title">Office Location</div>
+              <div class="stkExactFoot-contact-subtext">
+                Plaza XYZ Street, City
+              </div>
+            </div>
+            <div class="stkExactFoot-contact-item">
+              <div class="stkExactFoot-contact-icon">
+                <svg viewBox="0 0 512 512">
+                  <path
+                    d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9V96c0-26.5-21.5-48-48-48H48C21.5 48 0 69.5 0 96v35.1c0 7.4 3.4 14.4 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.3z"
+                  />
+                </svg>
+              </div>
+              <div class="stkExactFoot-contact-title">Support Email</div>
+              <div class="stkExactFoot-contact-subtext">hello@stackly.com</div>
+            </div>
+            <div class="stkExactFoot-contact-item">
+              <div class="stkExactFoot-contact-icon">
+                <svg viewBox="0 0 512 512">
+                  <path
+                    d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.7-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.3-7.8-20.9-18.6-23.4z"
+                  />
+                </svg>
+              </div>
+              <div class="stkExactFoot-contact-title">Contact Us</div>
+              <div class="stkExactFoot-contact-subtext">+1 234 567 890</div>
+            </div>
+          </div>
+
+          <nav class="stkExactFoot-nav-links">
+            <a href="./home2.html" class="stkExactFoot-nav-link">Home</a>
+            <a href="./about2.html" class="stkExactFoot-nav-link">About</a>
+            <a href="./service2.html" class="stkExactFoot-nav-link">Services</a>
+            <a href="./blog2.html" class="stkExactFoot-nav-link">Blog</a>
+            <a href="./contact2.html" class="stkExactFoot-nav-link">Contact</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Copyright Strip -->
+      <div class="stkExactFoot-copyright-strip">
+        © 2024 Stackly Technologies. All Rights Reserved.
+      </div>
+
+      <!-- Scroll to top -->
+      <!-- <div class="stkExactFoot-scroll-top" id="stkExactFoot-scrollBtn">
+        <svg width="18" height="18" viewBox="0 0 448 512" fill="white">
+          <path
+            d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L210.7 35.4c9.4-9.4 24.6-9.4 33.9 0L442.7 233.4c9.4 9.4 9.4 24.6 0 33.9l-22.2 22.2c-9.5 9.5-25 9.3-34.3-.4L256 158.1V480c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V158.1L46.2 289.1c-9.3 9.7-24.8 9.9-34.3.4z"
+          />
+        </svg>
+      </div> -->
+    </footer>
+    <!-- MAP -->
+    <!-- <div class="map-section">
+      <iframe
+        style="width: 100%; height: 100%; border: none"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354!2d144.9537!3d-37.8162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ4JzU4LjYiUyAxNDTCsDU3JzEzLjMiRQ!5e0!3m2!1sen!2sau!4v1634720132331"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div> -->
+    <script src="./nav22.js"></script>
+    <script src="./footer22.js"></script>
+    <script>
+      window.onload = () => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".stackly-blog-hero-title", {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: "power4.out",
+        });
+        gsap.from(".stackly-blog-card", {
+          scrollTrigger: { trigger: ".stackly-blog-list", start: "top 80%" },
+          y: 60,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.2,
+        });
+      };
+    </script>
+  </body>
+</html>

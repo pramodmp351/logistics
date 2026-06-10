@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stackly Logistics - Premium Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+      :root {
+        --sidebar-bg: #f8fafc;
+        --sidebar-text: #475569;
+        --body-bg: #f0f2f8;
+        --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+        --blue-primary: #065f46;
+        --primary-dark: #022c22;
+        --accent-gold: #d4af37;
+        --accent-gold-light: #e6c767;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: var(--body-bg);
+        color: #3c4858;
+        overflow-x: hidden;
+      }
+
+      /* Sidebar Styling */
+      .sidebar {
+        width: 210px;
+        background-color: #fff;
+        color: var(--sidebar-text);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 100;
+        border-right: 1px solid #e2e8f0;
+      }
+      .back-home-btn {
+        display: inline-block;
+        padding: 14px 28px;
+
+        background: linear-gradient(135deg, #065f46, #022c22);
+        box-shadow: 0 8px 20px rgba(6, 95, 70, 0.3);
+
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        box-shadow: 0 12px 25px rgba(6, 95, 70, 0.4);
+      }
+
+      /* Hover Effect */
+      .back-home-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+        filter: brightness(1.05);
+      }
+
+      /* Click Effect */
+      .back-home-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+      }
+      .nav-item {
+        padding: 8px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: #64748b;
+      }
+
+      .nav-item:hover {
+        color: var(--blue-primary);
+      }
+      .nav-item.active {
+        color: #065f46;
+        background-color: rgba(6, 95, 70, 0.08);
+        border-left: 3px solid #d4af37;
+      }
+      .nav-title {
+        padding: 18px 20px 6px;
+        font-size: 9px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #94a3b8;
+      }
+
+      /* Header Styling */
+      .header-metric-label {
+        font-size: 10px;
+        font-weight: 700;
+        color: #94a3b8;
+        text-transform: uppercase;
+      }
+      .header-metric-value {
+        font-size: 16px;
+        font-weight: 700;
+        color: #334155;
+      }
+
+      /* Cards */
+      .custom-card {
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: var(--card-shadow);
+        border: 1px solid #e2e8f0;
+      }
+
+      /* Colored City Grid Styling */
+      .city-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 10px;
+        height: 400px;
+        overflow-y: auto;
+        padding: 4px;
+      }
+
+      .city-tile {
+        position: relative;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px 8px;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 85px;
+        overflow: hidden;
+      }
+
+      /* Status color bars at the top of tiles */
+      .city-tile::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--city-color, #e2e8f0);
+      }
+
+      .city-name {
+        font-size: 11px;
+        font-weight: 600;
+        color: #475569;
+        transition: all 0.3s ease;
+        z-index: 2;
+      }
+
+      .city-sales {
+        position: absolute;
+        font-size: 12px;
+        font-weight: 800;
+        color: white;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 2;
+      }
+
+      .city-tile:hover {
+        border-color: transparent;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        transform: scale(1.05);
+        background-color: var(--city-color);
+      }
+
+      .city-tile:hover .city-name {
+        color: white;
+        opacity: 0.3;
+        transform: translateY(-5px);
+      }
+
+      .city-tile:hover .city-sales {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .perf-high {
+        --city-color: #065f46;
+      } /* Emerald */
+
+      .perf-mid {
+        --city-color: #0f766e;
+      } /* Teal */
+
+      .perf-alert {
+        --city-color: #d4af37;
+      } /* Gold */
+
+      .perf-low {
+        --city-color: #7f1d1d;
+      } /* Dark Red */ /* Red */
+
+      /* Scrollbar customization */
+      .city-grid::-webkit-scrollbar {
+        width: 4px;
+      }
+      .city-grid::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .city-grid::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
+
+      @media (max-width: 1024px) {
+        .sidebar {
+          position: fixed;
+          left: -210px;
+          height: 100vh;
+        }
+        .sidebar.open {
+          left: 0;
+        }
+        .header-metrics {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="flex min-h-screen">
+    <div
+      id="sidebar-overlay"
+      class="fixed inset-0 bg-black/50 z-[90] hidden"
+    ></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar flex flex-col">
+      <div class="p-5 flex items-center gap-2 border-b">
+        <div
+          class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white text-xs font-bold"
+        >
+          S
+        </div>
+        <span class="text-blue-600 font-bold tracking-tight text-lg"
+          >Stackly</span
+        >
+      </div>
+
+      <div class="flex-1 overflow-y-auto">
+        <div class="nav-title">Main</div>
+        <div class="nav-item active">
+          <i class="fa-solid fa-th-large w-4"></i>
+          <span>Index</span>
+          <span
+            class="ml-auto bg-green-500 text-white text-[9px] px-1 rounded-sm"
+            >1</span
+          >
+        </div>
+        <div class="nav-title">General</div>
+        <div class="nav-item" onclick="window.location.href = './404.html'">
+          <i class="fa-solid fa-icons w-4"></i><span>Icons</span>
+        </div>
+        <div class="nav-item justify-between">
+          <div
+            class="flex items-center gap-3"
+            onclick="window.location.href = './404.html'"
+          >
+            <i class="fa-solid fa-chart-pie w-4"></i><span>Charts</span>
+          </div>
+          <i class="fa-solid fa-angle-right text-[9px]"></i>
+        </div>
+        <div class="nav-title" onclick="window.location.href = './404.html'">
+          Web Apps
+        </div>
+        <div class="nav-item" onclick="window.location.href = './404.html'">
+          <i class="fa-solid fa-rocket w-4"></i><span>Apps</span>
+        </div>
+        <div class="nav-item" onclick="window.location.href = './404.html'">
+          <i class="fa-solid fa-layer-group w-4"></i><span>Elements</span>
+        </div>
+        <div class="nav-title" onclick="window.location.href = './404.html'">
+          Components
+        </div>
+        <div class="nav-item">
+          <i class="fa-solid fa-file-lines w-4"></i><span>Forms</span>
+        </div>
+        <div class="nav-item" onclick="window.location.href = './404.html'">
+          <i class="fa-solid fa-table w-4"></i><span>Tables</span>
+        </div>
+        <div class="nav-item" onclick="window.location.href = './404.html'">
+          <i class="fa-solid fa-map w-4"></i><span>Maps</span>
+        </div>
+        <div class="nav-item">
+          <a href="./index.html" class="back-home-btn">BACK TO HOME</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="flex-1 flex flex-col min-w-0">
+      <!-- Header -->
+      <header
+        class="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-6 sticky top-0 z-40"
+      >
+        <div class="flex items-center gap-4">
+          <button id="mobile-toggle" class="lg:hidden text-gray-400">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div>
+            <h2 class="text-base font-bold text-slate-800 leading-tight">
+              Hi, welcome back!
+            </h2>
+            <p class="text-[10px] text-gray-400">
+              Sales monitoring dashboard template.
+            </p>
+          </div>
+        </div>
+
+        <div class="header-metrics hidden md:flex items-center gap-8">
+          <div class="text-right">
+            <div class="header-metric-label">Customer Ratings</div>
+            <div class="flex items-center gap-1 justify-end">
+              <div class="flex text-yellow-400 text-[9px]">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="text-[10px] text-gray-400">(14,873)</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="header-metric-label">Online Sales</div>
+            <div class="header-metric-value">563,275</div>
+          </div>
+          <div class="text-right">
+            <div class="header-metric-label">Offline Sales</div>
+            <div class="header-metric-value">783,675</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="p-5 space-y-6">
+        <!-- 4 Summary Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="custom-card bg-[#0061f2] p-5 text-white">
+            <div class="text-[10px] font-bold uppercase opacity-80">
+              Today Orders
+            </div>
+            <div class="text-2xl font-bold mt-1">$5,74.12</div>
+            <div class="text-[9px] mt-1 opacity-70">Compared to last week</div>
+            <div class="mt-4 h-10 w-full"><canvas id="spark1"></canvas></div>
+          </div>
+          <div class="custom-card bg-[#f5365c] p-5 text-white">
+            <div class="text-[10px] font-bold uppercase opacity-80">
+              Today Earnings
+            </div>
+            <div class="text-2xl font-bold mt-1">$1,230.17</div>
+            <div class="text-[9px] mt-1 opacity-70">Compared to last week</div>
+            <div class="mt-4 h-10 w-full"><canvas id="spark2"></canvas></div>
+          </div>
+          <div class="custom-card bg-[#2dce89] p-5 text-white">
+            <div class="text-[10px] font-bold uppercase opacity-80">
+              Total Earnings
+            </div>
+            <div class="text-2xl font-bold mt-1">$7,125.70</div>
+            <div class="text-[9px] mt-1 opacity-70">Compared to last week</div>
+            <div class="mt-4 h-10 w-full"><canvas id="spark3"></canvas></div>
+          </div>
+          <div class="custom-card bg-[#fb6340] p-5 text-white">
+            <div class="text-[10px] font-bold uppercase opacity-80">
+              Product Sold
+            </div>
+            <div class="text-2xl font-bold mt-1">$4,820.50</div>
+            <div class="text-[9px] mt-1 opacity-70">Compared to last week</div>
+            <div class="mt-4 h-10 w-full"><canvas id="spark4"></canvas></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Order Status Chart -->
+          <div class="custom-card lg:col-span-2 p-5">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="text-xs font-bold text-slate-800 uppercase">
+                Order Status
+              </h3>
+              <div class="flex gap-4">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span
+                  ><span class="text-[10px] text-gray-400">Success</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-red-500"></span
+                  ><span class="text-[10px] text-gray-400">Pending</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-[10px] text-gray-400 mb-6">
+              Track your order from ship date to arrival.
+            </p>
+            <div class="h-[320px]"><canvas id="orderChart"></canvas></div>
+          </div>
+
+          <!-- City Grid Card -->
+          <div class="custom-card p-5">
+            <h3 class="text-xs font-bold text-slate-800 uppercase mb-1">
+              Sales Revenue by City
+            </h3>
+            <p class="text-[10px] text-gray-400 mb-4">
+              Color indicators: Blue (High), Green (Mid), Red (Low).
+            </p>
+
+            <div id="city-grid" class="city-grid">
+              <!-- Cities will be injected by JavaScript with colors -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-10">
+          <div class="custom-card p-5">
+            <h3 class="text-xs font-bold text-slate-800 uppercase mb-4">
+              Your Top Countries
+            </h3>
+            <table class="w-full custom-table">
+              <thead class="text-left">
+                <tr class="border-b border-gray-100">
+                  <th class="pb-3 text-[10px] text-gray-400 uppercase">
+                    Country
+                  </th>
+                  <th
+                    class="pb-3 text-right text-[10px] text-gray-400 uppercase"
+                  >
+                    Revenue
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-50">
+                <tr>
+                  <td class="py-3 text-[11px] font-medium">United States</td>
+                  <td
+                    class="py-3 text-right text-[11px] font-bold text-slate-700"
+                  >
+                    $1,871.10
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 text-[11px] font-medium">Netherlands</td>
+                  <td
+                    class="py-3 text-right text-[11px] font-bold text-slate-700"
+                  >
+                    $1,084.75
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 text-[11px] font-medium">United Kingdom</td>
+                  <td
+                    class="py-3 text-right text-[11px] font-bold text-slate-700"
+                  >
+                    $1,066.88
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 text-[11px] font-medium">India</td>
+                  <td
+                    class="py-3 text-right text-[11px] font-bold text-slate-700"
+                  >
+                    $1,830.12
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="custom-card p-5">
+            <h3 class="text-xs font-bold text-slate-800 uppercase mb-4">
+              Recent Activity
+            </h3>
+            <div class="space-y-5">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs"
+                >
+                  <i class="fa-solid fa-shopping-cart"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="text-[11px] font-bold text-slate-700">
+                    New Order #4561
+                  </div>
+                  <div class="text-[9px] text-gray-400">2 minutes ago</div>
+                </div>
+                <div class="text-[11px] font-bold text-blue-600">+$250</div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-8 h-8 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center text-xs"
+                >
+                  <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="text-[11px] font-bold text-slate-700">
+                    New User Registered
+                  </div>
+                  <div class="text-[9px] text-gray-400">1 hour ago</div>
+                </div>
+                <div
+                  class="text-[11px] font-bold text-pink-600 uppercase text-[9px]"
+                >
+                  Active
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        // Sidebar controls
+        const toggle = document.getElementById("mobile-toggle");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebar-overlay");
+        const handleToggle = () => {
+          sidebar.classList.toggle("open");
+          overlay.classList.toggle("hidden");
+        };
+        toggle.onclick = handleToggle;
+        overlay.onclick = handleToggle;
+
+        // Generate Colored City Grid
+        const cities = [
+          { name: "New York", val: 45210, perf: "perf-high" },
+          { name: "Los Angeles", val: 38150, perf: "perf-high" },
+          { name: "Chicago", val: 29400, perf: "perf-mid" },
+          { name: "Houston", val: 27800, perf: "perf-mid" },
+          { name: "Phoenix", val: 22100, perf: "perf-alert" },
+          { name: "Philadelphia", val: 19450, perf: "perf-alert" },
+          { name: "San Antonio", val: 18200, perf: "perf-low" },
+          { name: "San Diego", val: 17900, perf: "perf-low" },
+          { name: "Dallas", val: 24600, perf: "perf-mid" },
+          { name: "San Jose", val: 21300, perf: "perf-mid" },
+          { name: "Austin", val: 19800, perf: "perf-alert" },
+          { name: "Jacksonville", val: 12400, perf: "perf-low" },
+          { name: "Fort Worth", val: 14200, perf: "perf-low" },
+          { name: "Columbus", val: 13100, perf: "perf-low" },
+          { name: "San Francisco", val: 31000, perf: "perf-high" },
+          { name: "Charlotte", val: 15400, perf: "perf-low" },
+          { name: "Indianapolis", val: 11900, perf: "perf-low" },
+          { name: "Seattle", val: 28400, perf: "perf-mid" },
+          { name: "Denver", val: 20100, perf: "perf-mid" },
+          { name: "Washington", val: 26700, perf: "perf-mid" },
+          { name: "Boston", val: 25200, perf: "perf-mid" },
+          { name: "Nashville", val: 13800, perf: "perf-low" },
+          { name: "El Paso", val: 9400, perf: "perf-low" },
+          { name: "Detroit", val: 10200, perf: "perf-low" },
+          { name: "Portland", val: 16500, perf: "perf-alert" },
+          { name: "Las Vegas", val: 18900, perf: "perf-alert" },
+          { name: "Oklahoma", val: 11200, perf: "perf-low" },
+          { name: "Memphis", val: 8700, perf: "perf-low" },
+          { name: "Louisville", val: 9100, perf: "perf-low" },
+          { name: "Baltimore", val: 14600, perf: "perf-low" },
+        ];
+
+        const grid = document.getElementById("city-grid");
+        cities.forEach((city) => {
+          const tile = document.createElement("div");
+          tile.className = `city-tile ${city.perf}`;
+          tile.innerHTML = `
+                    <span class="city-name">${city.name}</span>
+                    <span class="city-sales">$${city.val.toLocaleString()}</span>
+                `;
+          grid.appendChild(tile);
+        });
+
+        // Sparkline Charts
+        const sparkConfig = () => ({
+          type: "line",
+          data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8],
+            datasets: [
+              {
+                data: Array.from({ length: 8 }, () =>
+                  Math.floor(Math.random() * 50),
+                ),
+                borderColor: "white",
+                borderWidth: 1.5,
+                pointRadius: 0,
+                fill: true,
+                backgroundColor: "rgba(255,255,255,0.1)",
+                tension: 0.4,
+              },
+            ],
+          },
+          options: {
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { display: false }, y: { display: false } },
+          },
+        });
+
+        ["spark1", "spark2", "spark3", "spark4"].forEach(
+          (id) => new Chart(document.getElementById(id), sparkConfig()),
+        );
+
+        // Order Status Bar Chart
+        new Chart(document.getElementById("orderChart"), {
+          type: "bar",
+          data: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            datasets: [
+              {
+                label: "Success",
+                backgroundColor: "#0061f2",
+                data: [70, 60, 50, 80, 40, 60, 50, 75, 40, 60, 50, 45],
+                barThickness: 8,
+              },
+              {
+                label: "Pending",
+                backgroundColor: "#f5365c",
+                data: [40, 50, 40, 60, 30, 45, 40, 50, 35, 45, 40, 30],
+                barThickness: 8,
+              },
+            ],
+          },
+          options: {
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: {
+                grid: { color: "#f1f5f9" },
+                ticks: { font: { size: 9 }, color: "#94a3b8" },
+              },
+              x: {
+                grid: { display: false },
+                ticks: { font: { size: 9 }, color: "#94a3b8" },
+              },
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,442 @@
+:root {
+  --stackly-navy: #0b2f44;
+  --stackly-navy-overlay: rgba(11, 47, 68, 0.9);
+  --stackly-orange: #f27618;
+  --stackly-orange-hover: #d96515;
+  --stackly-form-bg: #ffffff;
+  --stackly-heading: #0f172a;
+  --stackly-white: #ffffff;
+  --stackly-black: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--stackly-white);
+  color: var(--stackly-heading);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- HERO SECTION --- */
+.stackly-contact-hero {
+  position: relative;
+  min-height: 400px;
+  background-color: var(--stackly-navy);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 60px 5%;
+
+  background-image: url("./files/truck.webp");
+  background-repeat: no-repeat;
+  background-size: cover; /* VERY IMPORTANT */
+  background-position: center; /* Keep subject centered */
+}
+
+.stackly-contact-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+}
+
+.stackly-contact-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    var(--stackly-navy) 90%
+  );
+  z-index: 2;
+}
+
+.stackly-contact-hero-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.stackly-contact-hero-title {
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 900;
+  color: var(--stackly-white);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.stackly-contact-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--stackly-white);
+}
+
+.stackly-contact-breadcrumb-home {
+  color: var(--stackly-orange);
+  text-decoration: none;
+}
+.stackly-contact-breadcrumb-sep {
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+.stackly-contact-hero-visuals {
+  position: relative;
+  height: 400px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-img {
+  position: absolute;
+  pointer-events: none;
+}
+.globe {
+  width: 480px;
+  right: -40px;
+  top: -40px;
+  opacity: 0.85;
+  z-index: 3;
+}
+.plane {
+  width: 280px;
+  right: 10%;
+  top: -60px;
+  z-index: 5;
+}
+.ship {
+  width: 400px;
+  right: -80px;
+  bottom: -40px;
+  z-index: 4;
+}
+.truck-front {
+  width: 340px;
+  right: 15%;
+  bottom: 20px;
+  z-index: 6;
+}
+
+.hero-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: var(--stackly-orange);
+  clip-path: polygon(0 100%, 100% 100%, 100% 80%, 0 20%);
+  z-index: 15;
+}
+@media (max-width: 991px) {
+  .stackly-contact-hero {
+    min-height: 350px;
+    padding: 50px 6%;
+    background-position: center center;
+  }
+}
+
+@media (max-width: 768px) {
+  .stackly-contact-hero {
+    min-height: 300px;
+    padding: 40px 6%;
+    background-position: center top; /* better framing for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .stackly-contact-hero {
+    min-height: 260px;
+    padding: 30px 6%;
+    background-position: center top;
+  }
+}
+/* --- FORM SECTION --- */
+.stackly-contact-form-section {
+  padding: 100px 5%;
+  background: #f0fdfa;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 850px;
+}
+
+.logistics-svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50 Q 100 20, 150 50 T 250 50' stroke='%23333' stroke-width='1' fill='none' stroke-dasharray='4 4' opacity='0.1'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%23F27618' opacity='0.2'/%3E%3Cpath d='M300 150 L320 170 M320 150 L300 170' stroke='%23333' opacity='0.1'/%3E%3Cpath d='M100 300 L120 300 M110 290 L110 310' stroke='%23333' opacity='0.1'/%3E%3C/svg%3E");
+  z-index: 2;
+}
+
+.form-flex-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.truck-side-visual {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -100px;
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.truck-side-visual img {
+  width: 100%;
+  max-width: 750px;
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.15));
+}
+
+.quote-form-card {
+  flex: 0 0 540px;
+  background: var(--stackly-white);
+  padding: 50px;
+  border-radius: 4px;
+  box-shadow: 0 25px 60px rgba(11, 47, 68, 0.1);
+  opacity: 0;
+  transform: translateY(80px);
+}
+
+.quote-form-card .pre {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.quote-form-card h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--stackly-navy);
+  margin-bottom: 35px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.full {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--stackly-navy);
+}
+
+.form-group label span {
+  color: var(--stackly-orange);
+}
+
+.form-group input,
+.form-group select {
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 4px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus {
+  border-color: var(--stackly-orange);
+  background: #fff;
+}
+
+.submit-btn {
+  grid-column: span 2;
+  height: 56px;
+  background: var(--stackly-black);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: var(--stackly-navy);
+  transform: translateY(-2px);
+}
+
+/* --- TEXT LOGO MARQUEE --- */
+.marquee-section {
+  padding: 80px 0;
+  background: var(--stackly-white);
+  overflow: hidden;
+  width: 100%;
+  border-top: 1px solid #f1f5f9;
+}
+
+.marquee-container {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.brand-text {
+  display: inline-flex;
+  align-items: center;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 900;
+  color: var(--stackly-navy);
+  padding: 0 60px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  opacity: 0.25;
+  transition: opacity 0.3s;
+  cursor: default;
+}
+
+.brand-text:hover {
+  opacity: 1;
+  color: var(--stackly-orange);
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--stackly-orange);
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+/* --- MAP --- */
+.map-section {
+  height: 450px;
+  width: 100%;
+  border-top: 5px solid var(--stackly-navy);
+}
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: contrast(1.1);
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 1100px) {
+  .form-flex-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .truck-side-visual {
+    width: 100%;
+    margin-right: 0;
+    justify-content: center;
+    order: 1;
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  .truck-side-visual img {
+    max-width: 500px;
+  }
+  .quote-form-card {
+    flex: 1;
+    width: 100%;
+    max-width: 600px;
+    order: 2;
+  }
+}
+
+@media (max-width: 1024px) {
+  .stackly-contact-hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .stackly-contact-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+  }
+  .stackly-contact-hero-visuals {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .stackly-contact-hero {
+    min-height: 400px;
+  }
+  .stackly-contact-hero-title {
+    font-size: 48px;
+  }
+  .stackly-contact-form-section {
+    padding: 40px 5%;
+  }
+  .quote-form-card {
+    padding: 30px 20px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .full {
+    grid-column: span 1;
+  }
+  .submit-btn {
+    grid-column: span 1;
+  }
+  .map-section {
+    height: 300px;
+  }
+  .brand-text {
+    padding: 0 30px;
+  }
+  .truck-side-visual img {
+    max-width: 100%;
+  }
+}

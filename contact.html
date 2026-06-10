@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STACKLY - Global Logistics Solutions</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./contact.css" />
+  </head>
+  <body>
+    <!-- Desktop Top Bar -->
+    <div class="top-bar">
+      <div class="promo-text">
+        “Get the best rates for road, air, and sea freight “
+        <a href="./404.html" class="read-more">Read more <span>&rarr;</span></a>
+      </div>
+      <div class="top-nav-links">
+        <a href="./login.html"
+          ><i data-lucide="user" style="width: 14px"></i> Sign In</a
+        >
+        <div class="divider"></div>
+        <a href="./login.html">Register</a>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+      <a href="./index.html"
+        ><div class="logo-container">
+          <img
+            src="./assets/logo.webp"
+            alt="Stackly Logo"
+            class="logo-img"
+          /></div
+      ></a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item-wrapper">
+            <a href="./index.html" class="nav-item active"
+              >HOME <i data-lucide="chevron-down" class="chevron"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="./index.html">HOME 1</a></li>
+              <li><a href="./home2.html">HOME 2</a></li>
+              <!-- <li><a href="#">Freight Forwarding</a></li>
+              <li><a href="#">Cargo Shipping</a></li> -->
+            </ul>
+          </li>
+          <li><a href="./about.html" class="nav-item">ABOUT US</a></li>
+          <li class="nav-item-wrapper">
+            <a href="./service.html" class="nav-item">SERVICES </a>
+          </li>
+          <li><a href="./blog.html" class="nav-item">BLOG</a></li>
+          <li><a href="./dashboard.html" class="nav-item">DASHBOARD</a></li>
+          <!-- <li class="nav-item-wrapper">
+            <a href="#" class="nav-item"
+              >News <i data-lucide="chevron-down" class="chevron"></i
+            ></a>
+          </li> -->
+          <!-- <li class="nav-item-wrapper">
+            <a href="#" class="nav-item"
+              >Pages <i data-lucide="chevron-down" class="chevron"></i
+            ></a>
+          </li> -->
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="./404.html" class="phone-number">+1 (223) 344-5678</a>
+        <a href="./404.html"
+          ><button class="search-btn">
+            <i data-lucide="search" style="width: 20px"></i></button
+        ></a>
+        <a href="./contact.html" class="contact-btn">CONTACT US</a>
+      </div>
+
+      <button class="menu-toggle" id="openMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-overlay" id="overlay"></div>
+    <div class="mobile-drawer" id="drawer">
+      <div class="drawer-header">
+        <img
+          src="./assets/logo.webp"
+          alt="Stackly Logo"
+          class="logo-img"
+          style="filter: brightness(0) invert(1)"
+        />
+        <button class="drawer-close" id="closeMenu">
+          <i data-lucide="x" style="width: 30px; height: 30px"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-nav">
+        <li class="mobile-nav-item-container">
+          <div
+            class="mobile-nav-link"
+            onclick="toggleSubmenu('homeSubmenu', this)"
+          >
+            <span>HOME</span>
+            <div class="mobile-nav-toggle">
+              <i data-lucide="chevron-down" style="width: 20px"></i>
+            </div>
+          </div>
+          <ul class="mobile-submenu" id="homeSubmenu">
+            <li><a href="./index.html">HOME 1</a></li>
+            <li><a href="./home2.html">HOME 2</a></li>
+            <!-- <li><a href="#">Freight Forwarding</a></li> -->
+          </ul>
+        </li>
+        <li class="mobile-nav-item-container">
+          <a href="./about.html" class="mobile-nav-link">ABOUT US</a>
+        </li>
+        <li class="mobile-nav-item-container">
+          <div class="mobile-nav-link">
+            <a
+              href="./service.html"
+              style="text-decoration: none; color: #ffffff"
+              ><span>SERVICES</span></a
+            >
+            <div class="mobile-nav-toggle">
+              <!-- <i data-lucide="chevron-down" style="width: 20px"></i> -->
+            </div>
+          </div>
+        </li>
+        <li class="mobile-nav-item-container">
+          <div class="mobile-nav-link">
+            <a href="./blog.html" style="text-decoration: none; color: #ffffff"
+              ><span>BLOG</span></a
+            >
+            <div class="mobile-nav-toggle">
+              <!-- <i data-lucide="chevron-down" style="width: 20px"></i> -->
+            </div>
+          </div>
+        </li>
+        <li class="mobile-nav-item-container">
+          <div class="mobile-nav-link">
+            <a
+              href="./dashboard.html"
+              style="text-decoration: none; color: #ffffff"
+              ><span>DASHBOARD</span></a
+            >
+            <div class="mobile-nav-toggle">
+              <!-- <i data-lucide="chevron-down" style="width: 20px"></i> -->
+            </div>
+          </div>
+        </li>
+        <li class="mobile-nav-item-container">
+          <a href="./contact.html" class="mobile-nav-link">CONTACT</a>
+        </li>
+        <li class="mobile-nav-item-container">
+          <a href="./login.html" class="mobile-nav-link">LOGIN</a>
+        </li>
+      </ul>
+
+      <div class="mobile-contact-info">
+        <div class="contact-card">
+          <i data-lucide="phone" class="contact-icon"></i>
+          <div class="contact-text-group">
+            <span class="contact-label">Call Now</span>
+            <span class="contact-value">+82 (8800) - 98670</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i data-lucide="mail" class="contact-icon"></i>
+          <div class="contact-text-group">
+            <span class="contact-label">Send Email</span>
+            <span class="contact-value">help@company.com</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i data-lucide="clock" class="contact-icon"></i>
+          <div class="contact-text-group">
+            <span class="contact-label">Office Hours</span>
+            <span class="contact-value"
+              >Mon - Sat 8:00 - 6:30, Sunday - CLOSED</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-socials">
+        <a href="./404.html" class="social-item"
+          ><i data-lucide="twitter" style="width: 18px"></i
+        ></a>
+        <a href="./404.html" class="social-item"
+          ><i data-lucide="facebook" style="width: 18px"></i
+        ></a>
+        <a href="./404.html" class="social-item"
+          ><i data-lucide="instagram" style="width: 18px"></i
+        ></a>
+        <a href="./404.html" class="social-item"
+          ><i data-lucide="linkedin" style="width: 18px"></i
+        ></a>
+      </div>
+    </div>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-bg" id="parallax-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">CONTACT US</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="./index.html" class="home-link">Home</a>
+          <span class="arrow" aria-hidden="true">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </span>
+          <span class="current-page">Contact Us</span>
+        </nav>
+      </div>
+    </section>
+    <!-- STAT CARDS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3 data-target="50">0</h3>
+
+        <p>Countries Covered</p>
+      </div>
+      <div class="stat-card">
+        <h3 data-target="120">0</h3>
+
+        <p>Global Terminals</p>
+      </div>
+      <div class="stat-card">
+        <h3 data-target="24">0</h3>
+
+        <p>Expert Support</p>
+      </div>
+      <div class="stat-card">
+        <h3 data-target="15000">0</h3>
+        <p>Monthly Shipments</p>
+      </div>
+    </div>
+
+    <!-- MAP SECTION -->
+    <section class="map-section">
+      <div class="section-header">
+        <h2>Our Global Network</h2>
+        <p>
+          Strategically located hubs across 5 continents to ensure your cargo
+          never stops.
+        </p>
+      </div>
+      <div class="map-container">
+        <!-- Google Maps Placeholder - In production, replace with a real API embed -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d113264.444265431!2d-0.1276474!3d51.5073509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <div class="quote-section-wrapper">
+      <div class="page-wrapper">
+        <!-- LEFT SIDE -->
+        <section class="visual-section">
+          <img src="./assets/globe1.webp" alt="globe" class="globe-bg" />
+          <div class="route-line"></div>
+          <div class="icon-point point-top-right">
+            <img src="./assets/cantact.webp" alt="location" />
+          </div>
+          <div class="icon-point point-bottom-center">
+            <img src="./assets/contact.webp" alt="airplane" />
+          </div>
+          <div class="container-wrapper">
+            <img
+              src="./assets/contact.png"
+              alt="3D Shipping Container"
+              class="container-img"
+            />
+          </div>
+        </section>
+
+        <!-- RIGHT SIDE (FORM) -->
+        <section class="form-section">
+          <div class="quote-card">
+            <h1>GET A QUICK QUOTE</h1>
+
+            <div class="toggle-container">
+              <div class="toggle-pill" id="typeToggle">
+                <button class="toggle-btn active">Domestic</button>
+                <button class="toggle-btn inactive">International</button>
+              </div>
+            </div>
+
+            <form id="quoteForm" action="./404.html" method="get">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="label">Departure Country</label>
+                  <div class="input-wrapper">
+                    <img src="./assets/f1.webp" alt="flag" class="input-icon" />
+                    <select class="with-icon" name="departureCountry" required>
+                      <option value="" disabled selected>Select Country</option>
+                      <option value="usa">United States</option>
+                      <option value="germany">Germany</option>
+                      <option value="india">India</option>
+                      <option value="singapore">Singapore</option>
+                      <option value="uk">United Kingdom</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="label">Departure Terminal</label>
+                  <div class="input-wrapper">
+                    <img
+                      src="./assets/cantact.webp"
+                      alt="loc"
+                      class="input-icon"
+                    />
+                    <input
+                      type="text"
+                      name="departureTerminal"
+                      class="with-icon"
+                      placeholder="#820-V12 Hoppe Canyon, Port ..."
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="label">Destination Country</label>
+                  <select name="destinationCountry" required>
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="usa">United States</option>
+                    <option value="germany">Germany</option>
+                    <option value="india">India</option>
+                    <option value="singapore">Singapore</option>
+                    <option value="uk">United Kingdom</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="label">Destination Terminal</label>
+                  <div class="input-wrapper">
+                    <!-- <img
+                      src="./assets/contact.webp"
+                      alt="loc"
+                      class="input-icon"
+                    /> -->
+                    <select name="destinationTerminal" required>
+                      <option value="" disabled selected>
+                        Select Terminal
+                      </option>
+                      <option value="stackly1">STACKLY 1</option>
+                      <option value="stackly2">STACKLY 2</option>
+                      <option value="stackly3">STACKLY 3</option>
+                      <option value="stackly4">STACKLY 4</option>
+                      <option value="stackly5">STACKLY 5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group" style="flex: 100%">
+                  <label class="label">Shipment Type</label>
+                  <select name="shipmentType" required>
+                    <option value="" disabled selected>
+                      Select Shipment Type
+                    </option>
+                    <option value="air">Air Freight</option>
+                    <option value="sea">Sea Freight</option>
+                    <option value="road">Road Transport</option>
+                    <option value="rail">Rail Freight</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group" style="flex: 100%">
+                  <label class="label">Package Type</label>
+                  <select name="packageType" required>
+                    <option value="" disabled selected>
+                      Select Package Type
+                    </option>
+                    <option value="container20">20ft Container</option>
+                    <option value="container40">40ft Container</option>
+                    <option value="pallet">Pallet</option>
+                    <option value="box">Box</option>
+                    <option value="bulk">Bulk Cargo</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="label">Contact Name</label>
+                  <input
+                    type="text"
+                    name="contactName"
+                    placeholder="Company or Name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="example@email.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                Get a Quick Quote
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- LOCATION CARDS SECTION -->
+    <section class="location-cards-section">
+      <div class="location-header">
+        <h2>Our Major Global Hubs</h2>
+        <p>
+          Strategically positioned logistics centers ensuring seamless
+          international operations.
+        </p>
+      </div>
+
+      <div class="location-container">
+        <div class="location-card">
+          <div class="location-inner">
+            <div class="flag-box">
+              <img src="./assets/f1.webp" alt="USA Flag" />
+            </div>
+            <div class="location-info">
+              <h3>United States</h3>
+              <p>820 Hoppe Canyon, Port City</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-card">
+          <div class="location-inner">
+            <div class="flag-box">
+              <img src="./assets/f2.webp" alt="Germany Flag" />
+            </div>
+            <div class="location-info">
+              <h3>Germany</h3>
+              <p>45 Berlin Cargo Hub, DE</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-card">
+          <div class="location-inner">
+            <div class="flag-box">
+              <img src="./assets/f3.webp" alt="Singapore Flag" />
+            </div>
+            <div class="location-info">
+              <h3>Singapore</h3>
+              <p>88 Marina Freight Terminal</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-card">
+          <div class="location-inner">
+            <div class="flag-box">
+              <img src="./assets/f4.webp" alt="India Flag" />
+            </div>
+            <div class="location-info">
+              <h3>India</h3>
+              <p>12 Mumbai International Port</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <div class="cta-content-wrapper">
+        <div class="cta-left">
+          <h2>CALL CENTER 24/7</h2>
+          <a href="tel:+11231231224" class="cta-button">
+            <span class="cta-icon">
+              <!-- Phone SVG -->
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011-.24 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 6a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.25 1l-2.2 2.24z"
+                />
+              </svg>
+            </span>
+            <span>+1 (123) 123-1224</span>
+          </a>
+        </div>
+
+        <div class="cta-right">
+          <img src="./assets/contact5.webp" alt="Support Agent" />
+        </div>
+      </div>
+    </section>
+    <footer class="stk-footer">
+      <!-- Blue/Black Top Bar -->
+      <div class="stk-topbar">
+        <div class="stk-logo-area">
+          <a href="./index.html">
+            <img
+              src="./assets/logo.webp"
+              alt="Stackly Logo"
+              class="stk-logo-img"
+          /></a>
+        </div>
+
+        <div class="stk-newsletter-area">
+          <h2 class="stk-newsletter-title">Subscribe Newsletter</h2>
+
+          <div class="stk-input-group">
+            <input
+              type="email"
+              class="stk-newsletter-input"
+              placeholder="Your Email Address"
+            />
+            <button class="stk-subscribe-btn">Subscribe Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Footer Content -->
+      <div class="stk-footer-main">
+        <!-- Get In Touch -->
+        <div class="stk-footer-col">
+          <h3>Get In Touch</h3>
+
+          <div class="stk-contact-row">
+            <div class="stk-contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+
+            <div class="stk-contact-text">
+              <strong>Corporate Office</strong>
+              <p>3891 Ranchview Dr. Richardson, California 62639</p>
+            </div>
+          </div>
+
+          <div class="stk-contact-extra">
+            <p>Call Us: +1-416-8241228</p>
+            <p>Email: infostackly@email.com</p>
+          </div>
+        </div>
+
+        <!-- Service -->
+        <div class="stk-footer-col stk-service-wrapper">
+          <div class="stk-col-divider"></div>
+
+          <div class="stk-service-content">
+            <h3>Service</h3>
+            <ul class="stk-service-list">
+              <li><a href="./service.html">Freight Transportation</a></li>
+              <li><a href="./service.html">Warehousing & Distribution</a></li>
+              <li><a href="./service.html">Supply Chain Management</a></li>
+              <li><a href="./service.html">E-Commerce Solutions</a></li>
+              <li><a href="./service.html">Rebranding and Brand Refresh</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Quick Link -->
+        <div class="stk-footer-col">
+          <h3>Quick Link</h3>
+
+          <ul class="stk-quick-links">
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="./about.html">ABOUT</a></li>
+            <li><a href="./service.html">SERVICES</a></li>
+            <li><a href="./blog.html">BLOG</a></li>
+            <li><a href="./contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="stk-footer-bottom">
+        <div class="stk-copyright">
+          © All Copyright 2025 by <span>Stackly</span>
+        </div>
+
+        <div class="stk-social-group">
+          <a href="./404.html" class="stk-social-link" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="./404.html" class="stk-social-link" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="./404.html" class="stk-social-link" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="./404.html" class="stk-social-link" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="./nav.js"></script>
+    <script src="./footer.js"></script>
+    <script>
+      const toggleButtons = document.querySelectorAll(".toggle-btn");
+      toggleButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          toggleButtons.forEach((b) => {
+            b.classList.remove("active");
+            b.classList.add("inactive");
+          });
+          btn.classList.add("active");
+          btn.classList.remove("inactive");
+        });
+      });
+      /* ===================================== */
+      /* AUTO FADE IN ON PAGE LOAD */
+      /* ===================================== */
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const animatedElements = [
+          document.querySelector(".hero-content"),
+          document.querySelector(".stats-grid"),
+          document.querySelector(".map-section"),
+          document.querySelector(".quote-section-wrapper"),
+          document.querySelector(".location-cards-section"),
+          document.querySelector(".cta-section"),
+        ];
+
+        animatedElements.forEach((el, index) => {
+          if (el) {
+            el.classList.add("fade-in", `fade-in-delay-${index}`);
+          }
+        });
+      });
+
+      /* ===================================== */
+      /* FADE ANIMATION FOR TOGGLE SWITCH */
+      /* ===================================== */
+
+      const toggleButtons2 = document.querySelectorAll(".toggle-btn");
+
+      toggleButtons2.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const formCard = document.querySelector(".quote-card");
+
+          formCard.classList.add("fade-out");
+
+          setTimeout(() => {
+            formCard.classList.remove("fade-out");
+            formCard.classList.add("fade-in");
+
+            setTimeout(() => {
+              formCard.classList.remove("fade-in");
+            }, 800);
+          }, 300);
+        });
+      });
+      /* ===================================== */
+      /* STAT NUMBER COUNTER ANIMATION */
+      /* ===================================== */
+
+      function animateCounter(el) {
+        const target = +el.getAttribute("data-target");
+        const duration = 2000;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+          const value = Math.floor(progress * target);
+
+          // Formatting for 15000 → 15k+
+          if (target >= 1000) {
+            el.textContent = Math.floor(value / 1000) + "k+";
+          } else if (target === 24) {
+            el.textContent = value + "/7";
+          } else {
+            el.textContent = value + "+";
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+
+        requestAnimationFrame(update);
+      }
+
+      /* Trigger when visible */
+      window.addEventListener("load", () => {
+        const counters = document.querySelectorAll(".stat-card h3");
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.6 },
+        );
+
+        counters.forEach((counter) => observer.observe(counter));
+      });
+    </script>
+  </body>
+</html>

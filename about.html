@@ -1,0 +1,1243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Delivering Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./about.css" />
+  </head>
+  <body>
+    <!-- Desktop Top Bar -->
+    <div class="top-bar">
+      <div class="promo-text">
+        “Get the best rates for road, air, and sea freight “
+        <a href="./404.html" class="read-more">Read more <span>&rarr;</span></a>
+      </div>
+      <div class="top-nav-links">
+        <a href="./login.html"
+          ><i data-lucide="user" style="width: 14px"></i> Sign In</a
+        >
+        <div class="divider"></div>
+        <a href="./login.html">Register</a>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+      <a href="./index.html"
+        ><div class="logo-container">
+          <img
+            src="./assets/logo.webp"
+            alt="Stackly Logo"
+            class="logo-img"
+          /></div
+      ></a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item-wrapper">
+            <a href="./index.html" class="nav-item active"
+              >HOME <i data-lucide="chevron-down" class="chevron"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="./index.html">HOME 1</a></li>
+              <li><a href="./home2.html">HOME 2</a></li>
+              <!-- <li><a href="#">Freight Forwarding</a></li>
+              <li><a href="#">Cargo Shipping</a></li> -->
+            </ul>
+          </li>
+          <li><a href="./about.html" class="nav-item">ABOUT US</a></li>
+          <li class="nav-item-wrapper">
+            <a href="./service.html" class="nav-item">SERVICES </a>
+          </li>
+          <li><a href="./blog.html" class="nav-item">BLOG</a></li>
+          <li><a href="./dashboard.html" class="nav-item">DASHBOARD</a></li>
+          <!-- <li class="nav-item-wrapper">
+            <a href="#" class="nav-item"
+              >News <i data-lucide="chevron-down" class="chevron"></i
+            ></a>
+          </li> -->
+          <!-- <li class="nav-item-wrapper">
+            <a href="#" class="nav-item"
+              >Pages <i data-lucide="chevron-down" class="chevron"></i
+            ></a>
+          </li> -->
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="./404.html" class="phone-number">+1 (223) 344-5678</a>
+        <a href="./404.html"
+          ><button class="search-btn">
+            <i data-lucide="search" style="width: 20px"></i></button
+        ></a>
+        <a href="./contact.html" class="contact-btn">CONTACT US</a>
+      </div>
+
+      <button class="menu-toggle" id="openMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-overlay" id="overlay"></div>
+    <div class="mobile-drawer" id="drawer">
+      <div class="drawer-header">
+        <img
+          src="./assets/logo.webp"
+          alt="Stackly Logo"
+          class="logo-img"
+          style="filter: brightness(0) invert(1)"
+        />
+        <button class="drawer-close" id="closeMenu">
+          <i data-lucide="x" style="width: 30px; height: 30px"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-nav">
+        <li class="mobile-nav-item-container">
+          <div
+            class="mobile-nav-link"
+            onclick="toggleSubmenu('homeSubmenu', this)"
+          >
+            <span>HOME</span>
+            <div class="mobile-nav-toggle">
+              <i data-lucide="chevron-down" style="width: 20px"></i>
+            </div>
+          </div>
+          <ul class="mobile-submenu" id="homeSubmenu">
+            <li><a href="./index.html">HOME 1</a></li>
+            <li><a href="./home2.html">HOME 2</a></li>
+            <!-- <li><a href="#">Freight Forwarding</a></li> -->
+          </ul>
+        </li>
+        <li class="mobile-nav-item-container">
+          <a href="./about.html" class="mobile-nav-link">ABOUT US</a>
+        </li>
+        <li class="mobile-nav-item-container">
+          <div class="mobile-nav-link">
+            <a
+              href="./service.html"
+              style="text-decoration: none; color: #ffffff"
+              ><span>SERVICES</span></a
+            >
+            <div class="mobile-nav-toggle">
+              <!-- <i data-lucide="chevron-down" style="width: 20px"></i> -->
+            </div>
+          </div>
+        </li>
+        <li class="mobile-nav-item-container">
+          <div class="mobile-nav-link">
+            <a href="./blog.html" style="text-decoration: none; color: #ffffff"
+              ><span>BLOG</span></a
+            >
+            <div class="mobile-nav-toggle">
+              <!-- <i data-lucide="chevron-down" style="width: 20px"></i> -->
+            </div>
+          </div>
+        </li>
+        <li class="mobile-nav-item-container">
+          <div class="mobile-nav-link">
+            <a
+              href="./dashboard.html"
+              style="text-decoration: none; color: #ffffff"
+              ><span>DASHBOARD</span></a
+            >
+            <div class="mobile-nav-toggle">
+              <!-- <i data-lucide="chevron-down" style="width: 20px"></i> -->
+            </div>
+          </div>
+        </li>
+        <li class="mobile-nav-item-container">
+          <a href="./contact.html" class="mobile-nav-link">CONTACT</a>
+        </li>
+        <li class="mobile-nav-item-container">
+          <a href="./login.html" class="mobile-nav-link">LOGIN</a>
+        </li>
+      </ul>
+
+      <div class="mobile-contact-info">
+        <div class="contact-card">
+          <i data-lucide="phone" class="contact-icon"></i>
+          <div class="contact-text-group">
+            <span class="contact-label">Call Now</span>
+            <span class="contact-value">+82 (8800) - 98670</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i data-lucide="mail" class="contact-icon"></i>
+          <div class="contact-text-group">
+            <span class="contact-label">Send Email</span>
+            <span class="contact-value">help@company.com</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i data-lucide="clock" class="contact-icon"></i>
+          <div class="contact-text-group">
+            <span class="contact-label">Office Hours</span>
+            <span class="contact-value"
+              >Mon - Sat 8:00 - 6:30, Sunday - CLOSED</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-socials">
+        <a href="./404.html" class="social-item"
+          ><i data-lucide="twitter" style="width: 18px"></i
+        ></a>
+        <a href="./404.html" class="social-item"
+          ><i data-lucide="facebook" style="width: 18px"></i
+        ></a>
+        <a href="./404.html" class="social-item"
+          ><i data-lucide="instagram" style="width: 18px"></i
+        ></a>
+        <a href="./404.html" class="social-item"
+          ><i data-lucide="linkedin" style="width: 18px"></i
+        ></a>
+      </div>
+    </div>
+    <section class="hero-section">
+      <div class="hero-bg" id="parallax-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">ABOUT US</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="./index.html" class="home-link">Home</a>
+          <span class="arrow" aria-hidden="true">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </span>
+          <span class="current-page">About Us</span>
+        </nav>
+      </div>
+    </section>
+    <section class="about-section">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
+      >
+        <!-- Left Column: Images -->
+        <div class="image-wrapper order-2 lg:order-1">
+          <div class="ship-frame">
+            <img src="./assets/about1.webp" alt="Container Ship" />
+          </div>
+
+          <!-- 25+ Years Badge -->
+          <div class="years-badge">
+            <div class="content">
+              <span class="years-number">25+</span>
+              <span class="years-text"
+                >Years of Experience In the Trackgo Field.</span
+              >
+            </div>
+            <div class="badge-line"></div>
+          </div>
+
+          <!-- Background subtle outline element -->
+          <div
+            class="absolute -top-10 -left-10 opacity-5 pointer-events-none text-blue-900"
+          >
+            <svg width="240" height="240" viewBox="0 0 100 100">
+              <path
+                d="M10 50 L90 50 M50 10 L50 90"
+                stroke="currentColor"
+                stroke-width="0.3"
+                fill="none"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="currentColor"
+                stroke-width="0.3"
+                fill="none"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right Column: Text Content -->
+        <div class="order-1 lg:order-2">
+          <div class="label-box">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+            About Us
+          </div>
+
+          <h1 class="main-heading">Delivering Excellence Across Every Ocean</h1>
+
+          <p class="desc-p">
+            Our ocean freight services ensure safe, timely, and cost-effective
+            shipping—backed by global expertise, smart logistics, and a
+            commitment to excellence across every route.
+          </p>
+
+          <!-- History Box -->
+          <div class="history-card">
+            <div class="history-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="history-title">Our History</h4>
+              <p class="history-desc">
+                Decades of trusted sea freight experience, navigating global
+                trade with precision and care.
+              </p>
+            </div>
+          </div>
+
+          <!-- Checklist -->
+          <div class="feature-grid">
+            <div class="check-item">
+              <span class="check-icon">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Freight Forwarding
+            </div>
+            <div class="check-item">
+              <span class="check-icon">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Customs Clearance
+            </div>
+            <div class="check-item">
+              <span class="check-icon">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Warehousing & Delivery
+            </div>
+            <div class="check-item">
+              <span class="check-icon">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Global Logistics
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="btn-group">
+            <a href="./404.html">
+              <button class="read-more-btn">Read More</button></a
+            >
+            <a href="./404.html">
+              <button class="arrow-btn">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg></button
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section-container">
+      <div class="bg-overlay"></div>
+
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10"
+      >
+        <!-- Left Column: Content -->
+        <div class="space-y-6 lg:space-y-8">
+          <div class="space-y-4">
+            <div class="accent-text">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 12l-4-4-4 4M12 8v8"></path>
+              </svg>
+              Why Choose Us
+            </div>
+            <h1
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight"
+            >
+              Air Freight Backed By Experience
+            </h1>
+            <p
+              class="desc-text text-base md:text-lg max-w-lg leading-relaxed opacity-90"
+            >
+              With decades of industry expertise, we deliver precise, secure,
+              and timely air freight solutions—trusted by businesses worldwide.
+            </p>
+          </div>
+
+          <div class="space-y-1 lg:space-y-2">
+            <!-- Feature 1 -->
+            <div class="feature-item">
+              <div class="icon-box">
+                <svg
+                  class="w-8 h-8 lg:w-10 lg:h-10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-1.1.1-1.5.5l-.3.3c-.4.4-.4 1 0 1.4L10 12l-4 4-2.5-.5c-.4-.1-.8.1-1 .4l-.3.3c-.3.3-.3.8 0 1.1L6 21l3.7 3.7c.3.3.8.3 1.1 0l.3-.3c.3-.2.5-.6.4-1L11 21l4-4 3.6 7c.4.4 1 .4 1.4 0l.3-.3c.4-.4.6-1 .5-1.5z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg lg:text-2xl font-bold mb-1">
+                  Express Air Transport
+                </h3>
+                <p class="desc-text text-sm lg:text-base opacity-80">
+                  Priority air freight service ensuring your time-sensitive
+                  shipments arrive fast, safely
+                </p>
+              </div>
+            </div>
+
+            <!-- Feature 2 (Highlighted) -->
+            <div class="feature-item active">
+              <div class="icon-box">
+                <svg
+                  class="w-8 h-8 lg:w-10 lg:h-10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 8V3H3v5M3 12v9h18v-9M10 12h4m-7 0h.01m9.99 0h.01M3 8h18"
+                  />
+                  <path d="M12 12v5m-4-2l4 2 4-2" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg lg:text-2xl font-bold mb-1">
+                  Maximum Cargo Flexibility
+                </h3>
+                <p class="text-white text-sm lg:text-base">
+                  From small parcels to oversized loads, we offer scalable air
+                  freight solutions that adapt.
+                </p>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-item">
+              <div class="icon-box">
+                <svg
+                  class="w-8 h-8 lg:w-10 lg:h-10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg lg:text-2xl font-bold mb-1">
+                  Personalized Shipping Solutions
+                </h3>
+                <p class="desc-text text-sm lg:text-base opacity-80">
+                  Tailored air freight services designed to meet your unique
+                  cargo needs—delivering flexibility
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Image Collage -->
+        <div class="flex justify-center items-center w-full">
+          <div class="image-collage">
+            <!-- Left Slanted Image -->
+            <div class="slant-img img-left">
+              <img src="./assets/about2.webp" alt="Cargo Loading" />
+            </div>
+            <!-- Right Slanted Image -->
+            <div class="slant-img img-right">
+              <img src="./assets/why1.webp" alt="Airplane on Tarmac" />
+            </div>
+
+            <!-- Experience Badge -->
+            <div class="experience-badge shadow-2xl">
+              <div class="badge-thumb">
+                <img
+                  src="./assets/choose-03.webp"
+                  class="w-full h-full object-cover opacity-90"
+                  alt="Aerial view"
+                />
+              </div>
+              <div>
+                <div
+                  class="text-xl lg:text-4xl font-extrabold leading-tight text-white"
+                >
+                  40+ Years
+                </div>
+                <div
+                  class="text-gray-400 text-[10px] lg:text-sm font-medium uppercase tracking-wider"
+                >
+                  Working Experience
+                </div>
+              </div>
+              <div
+                class="absolute -bottom-2 left-6 lg:left-10 w-3 h-3 lg:w-4 lg:h-4 bg-[#ff4d1c] transform rotate-45"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <!-- Left Side: Text & Features -->
+        <div class="w-full lg:w-1/2 order-2 lg:order-1">
+          <h1
+            class="heading-font text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 uppercase"
+          >
+            CERTIFIED<br />WAREHOUSE
+          </h1>
+
+          <p
+            class="text-gray-custom text-lg md:text-xl leading-snug mb-10 max-w-2xl"
+          >
+            For clients choosing our warehouse logistics company, expect
+            seamless operations, optimized inventory management, streamlined
+            order fulfillment, and a commitment to your success.
+          </p>
+
+          <!-- Features List -->
+          <ul class="space-y-6 mb-10">
+            <li class="flex items-center gap-4">
+              <div class="icon-circle shadow-lg shadow-blue-200">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  />
+                </svg>
+              </div>
+              <span class="text-[#4a4a4a] text-lg font-medium"
+                >Global Warehousing Locations</span
+              >
+            </li>
+            <li class="flex items-center gap-4">
+              <div class="icon-circle shadow-lg shadow-blue-200">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3" />
+                  <path d="M3 12h18" />
+                  <path d="M3 16h4v4H3z" />
+                  <path d="m4 8 2 2 2-2" />
+                </svg>
+              </div>
+              <span class="text-[#4a4a4a] text-lg font-medium"
+                >Pick, Pack and Ship</span
+              >
+            </li>
+            <li class="flex items-center gap-4">
+              <div class="icon-circle shadow-lg shadow-blue-200">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="18" height="18" x="3" y="3" rx="2" />
+                  <path d="M9 12h6" />
+                  <path d="M9 16h6" />
+                  <path d="M9 8h6" />
+                </svg>
+              </div>
+              <span class="text-[#4a4a4a] text-lg font-medium"
+                >Optimized Inventory Management</span
+              >
+            </li>
+            <li class="flex items-center gap-4">
+              <div class="icon-circle shadow-lg shadow-blue-200">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 21h18" />
+                  <path
+                    d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"
+                  />
+                </svg>
+              </div>
+              <span class="text-[#4a4a4a] text-lg font-medium"
+                >Cross-Docking and Container Unloading</span
+              >
+            </li>
+          </ul>
+
+          <!-- Quote Button -->
+          <a href="./contact.html">
+            <button
+              class="btn-gradient text-white px-9 py-4 rounded font-bold text-sm tracking-widest uppercase shadow-xl"
+            >
+              Get a Quick Quote
+            </button></a
+          >
+        </div>
+
+        <!-- Right Side: Layered Images -->
+        <div
+          class="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center py-10 overflow-hidden"
+        >
+          <div class="image-container-stack" id="image-stack">
+            <!-- Layer 1: Dotted Globe Background -->
+            <img
+              src="./assets/globe1.webp"
+              alt="Dotted Globe Pattern"
+              class="bg-globe"
+              id="globe-img"
+            />
+
+            <!-- Layer 2: Main Containers -->
+            <img
+              src="./assets/about22.webp"
+              alt="Sailex Containers"
+              class="main-containers"
+              id="containers-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1>Fast, Easy and Flexible</h1>
+        <p>
+          We specialize in developing optimal routes for logistics operations,
+          providing reliable transport solutions for your business and personal
+          needs.
+        </p>
+      </header>
+
+      <!-- Slider -->
+      <div class="slider-wrapper" id="sliderWrapper">
+        <button class="nav-btn" id="prevBtn" aria-label="Previous">
+          <svg viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+
+        <div class="cards-container">
+          <div class="cards-track" id="track">
+            <!-- Image 1 -->
+            <div class="card">
+              <img src="./assets/flex1.webp" alt="Port Logistics" />
+            </div>
+            <!-- Image 2 -->
+            <div class="card">
+              <img src="./assets/contact1.webp" alt="Trucking" />
+            </div>
+            <!-- Image 3 -->
+            <div class="card">
+              <img src="./assets/parcel.webp" alt="Parcel Delivery" />
+            </div>
+            <!-- Image 4 -->
+            <div class="card">
+              <img src="./assets/flex2.webp" alt="Warehouse" />
+            </div>
+            <!-- Image 5 -->
+            <div class="card">
+              <img src="./assets/flex3.webp" alt="Air Freight" />
+            </div>
+            <!-- Image 6 -->
+            <div class="card">
+              <img src="./assets/flex4.webp" alt="Planning" />
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-btn" id="nextBtn" aria-label="Next">
+          <svg viewBox="0 0 24 24">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dots -->
+      <div class="pagination" id="pagination">
+        <!-- Dots generated by JS -->
+      </div>
+
+      <!-- Back to Top -->
+      <!-- <button
+        class="back-to-top"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m18 15-6-6-6 6" />
+        </svg>
+      </button> -->
+    </div>
+    <main class="shipping-wrapper">
+      <!-- Left Side: Dark Content -->
+      <div class="shipping-left">
+        <div class="shipping-content">
+          <h1
+            class="text-6xl lg:text-[100px] font-black tracking-tighter leading-[0.9] text-white mb-10"
+          >
+            LET'S START<br />SHIPPING
+          </h1>
+
+          <p
+            class="text-lg lg:text-xl text-gray-400 font-medium max-w-lg leading-relaxed mb-4"
+          >
+            Got parcels? Ship with ease! Create your shipment now and get your
+            packages on their way in no time.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Side: Image -->
+      <div class="shipping-right"></div>
+
+      <!-- Overlapping Card Section -->
+      <div class="shipping-cards-container">
+        <!-- Blue Section -->
+        <div class="shipping-blue-card">
+          <h2 class="text-4xl font-extrabold mb-10 tracking-tight">SHIP NOW</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div>
+              <label
+                class="block text-[11px] font-bold uppercase mb-3 tracking-widest opacity-80"
+              >
+                Country of Departure
+              </label>
+              <div class="relative">
+                <div
+                  class="absolute left-4 top-1/2 -translate-y-1/2 flex items-center pointer-events-none"
+                >
+                  <img src="./assets/f1.webp" width="18" alt="USA" />
+                  <span class="ml-3 text-gray-900 text-sm font-bold">USA</span>
+                </div>
+                <select
+                  class="shipping-select w-full pl-24 pr-10 py-4 rounded-sm text-sm font-bold focus:outline-none"
+                >
+                  <option></option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="block text-[11px] font-bold uppercase mb-3 tracking-widest opacity-80"
+              >
+                Country of Delivery
+              </label>
+              <div class="relative">
+                <div
+                  class="absolute left-4 top-1/2 -translate-y-1/2 flex items-center pointer-events-none"
+                >
+                  <img src="./assets/f2.webp" width="18" alt="USA" />
+                  <span class="ml-3 text-gray-900 text-sm font-bold"
+                    >GERMANY</span
+                  >
+                </div>
+                <select
+                  class="shipping-select w-full pl-24 pr-10 py-4 rounded-sm text-sm font-bold focus:outline-none"
+                >
+                  <option></option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <a href="./404.html">
+            <button
+              class="shipping-start-btn w-full py-5 rounded-sm text-xs font-black uppercase tracking-[0.2em] text-white shadow-xl"
+            >
+              START NEW SHIPPING
+            </button></a
+          >
+        </div>
+
+        <!-- White Section -->
+        <div class="shipping-contact-card">
+          <h2 class="text-4xl font-extrabold mb-4 tracking-tight text-gray-900">
+            CONTACT CENTER 24/7
+          </h2>
+
+          <p class="text-gray-500 text-lg mb-10 leading-relaxed font-medium">
+            If you have any questions or need additional services, we are here
+            to help! Feel free to contact us anytime for help
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-center">
+              <div class="shipping-icon-circle">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"
+                  />
+                </svg>
+              </div>
+              <span class="ml-5 font-bold text-gray-900 text-lg">
+                +1 (123) 123-1224
+              </span>
+            </div>
+
+            <div class="flex items-center">
+              <div class="shipping-icon-circle">
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <span class="ml-5 font-bold text-gray-900 text-lg">
+                sailexemail@mail.com
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Arrow -->
+      <!-- <div
+        class="shipping-floating-btn"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-width="3" d="M5 11l7-7 7 7M12 4v16" />
+        </svg>
+      </div> -->
+    </main>
+    <footer class="stk-footer">
+      <!-- Blue/Black Top Bar -->
+      <div class="stk-topbar">
+        <div class="stk-logo-area">
+          <a href="./index.html">
+            <img
+              src="./assets/logo.webp"
+              alt="Stackly Logo"
+              class="stk-logo-img"
+          /></a>
+        </div>
+
+        <div class="stk-newsletter-area">
+          <h2 class="stk-newsletter-title">Subscribe Newsletter</h2>
+
+          <div class="stk-input-group">
+            <input
+              type="email"
+              class="stk-newsletter-input"
+              placeholder="Your Email Address"
+            />
+            <button class="stk-subscribe-btn">Subscribe Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Footer Content -->
+      <div class="stk-footer-main">
+        <!-- Get In Touch -->
+        <div class="stk-footer-col">
+          <h3>Get In Touch</h3>
+
+          <div class="stk-contact-row">
+            <div class="stk-contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+
+            <div class="stk-contact-text">
+              <strong>Corporate Office</strong>
+              <p>3891 Ranchview Dr. Richardson, California 62639</p>
+            </div>
+          </div>
+
+          <div class="stk-contact-extra">
+            <p>Call Us: +1-416-8241228</p>
+            <p>Email: infostackly@email.com</p>
+          </div>
+        </div>
+
+        <!-- Service -->
+        <div class="stk-footer-col stk-service-wrapper">
+          <div class="stk-col-divider"></div>
+
+          <div class="stk-service-content">
+            <h3>Service</h3>
+            <ul class="stk-service-list">
+              <li><a href="./service.html">Freight Transportation</a></li>
+              <li><a href="./service.html">Warehousing & Distribution</a></li>
+              <li><a href="./service.html">Supply Chain Management</a></li>
+              <li><a href="./service.html">E-Commerce Solutions</a></li>
+              <li><a href="./service.html">Rebranding and Brand Refresh</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Quick Link -->
+        <div class="stk-footer-col">
+          <h3>Quick Link</h3>
+
+          <ul class="stk-quick-links">
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="./about.html">ABOUT</a></li>
+            <li><a href="./service.html">SERVICES</a></li>
+            <li><a href="./blog.html">BLOG</a></li>
+            <li><a href="./contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="stk-footer-bottom">
+        <div class="stk-copyright">
+          © All Copyright 2025 by <span>Stackly</span>
+        </div>
+
+        <div class="stk-social-group">
+          <a href="./404.html" class="stk-social-link" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="./404.html" class="stk-social-link" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="./404.html" class="stk-social-link" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="./404.html" class="stk-social-link" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./nav.js"></script>
+    <script src="./footer.js"></script>
+    <script>
+      /**
+       * FALLBACK HANDLER
+       * If the files dotted_globe_bg.png or sailex_containers.png are missing,
+       * we replace them with high-quality SVG data URIs so the layout stays perfect.
+       */
+
+      const globeSVG = `data:image/svg+xml;base64,${btoa(`
+            <svg width="600" height="600" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="dots" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="1" fill="#0061ff" fill-opacity="0.15" />
+                    </pattern>
+                </defs>
+                <circle cx="100" cy="100" r="90" fill="url(#dots)" />
+            </svg>
+        `)}`;
+
+      const containerSVG = `data:image/svg+xml;base64,${btoa(`
+            <svg width="500" height="400" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Bottom Container -->
+                <rect x="50" y="180" width="380" height="150" rx="8" fill="#0047ff" />
+                <path d="M50 180 L430 180" stroke="white" stroke-width="2" stroke-opacity="0.2"/>
+                <text x="80" y="270" font-family="Inter, sans-serif" font-weight="900" font-size="54" fill="white">SAILEX</text>
+                <text x="80" y="300" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="white" letter-spacing="4" fill-opacity="0.8">WORLDWIDE LOGISTICS</text>
+                
+                <!-- Top Container -->
+                <rect x="100" y="80" width="350" height="120" rx="6" fill="#1e69ff" />
+                <text x="130" y="150" font-family="Inter, sans-serif" font-weight="800" font-size="40" fill="white">SAILEX</text>
+                <text x="130" y="175" font-family="Inter, sans-serif" font-weight="600" font-size="10" fill="white" letter-spacing="3" fill-opacity="0.7">WORLDWIDE LOGISTICS</text>
+            </svg>
+        `)}`;
+
+      window.onload = () => {
+        const globeImg = document.getElementById("globe-img");
+        const containersImg = document.getElementById("containers-img");
+
+        // Handle Globe Error
+        globeImg.onerror = () => {
+          console.warn("Using SVG fallback for globe background.");
+          globeImg.src = globeSVG;
+        };
+
+        // Handle Containers Error
+        containersImg.onerror = () => {
+          console.warn("Using SVG fallback for container main image.");
+          containersImg.src = containerSVG;
+        };
+
+        // Diagnostic check for success
+        setTimeout(() => {
+          [globeImg, containersImg].forEach((img) => {
+            if (img.complete && img.naturalWidth !== 0) {
+              console.log(`Image active: ${img.id}`);
+            }
+          });
+        }, 500);
+      };
+
+      const track = document.getElementById("track");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const pagination = document.getElementById("pagination");
+      const sliderWrapper = document.getElementById("sliderWrapper");
+      const cards = document.querySelectorAll(".card");
+
+      let currentIndex = 0;
+      let autoScrollTimer;
+      const totalCards = cards.length;
+
+      function getVisibleCount() {
+        if (window.innerWidth > 900) return 3;
+        if (window.innerWidth > 600) return 2;
+        return 1;
+      }
+
+      // Create dots
+      for (let i = 0; i < totalCards; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+          goToSlide(i);
+          resetAutoScroll();
+        });
+        pagination.appendChild(dot);
+      }
+
+      const dots = document.querySelectorAll(".dot");
+
+      function updateSlider() {
+        const cardsVisible = getVisibleCount();
+        const maxIndex = totalCards - cardsVisible;
+
+        // Boundary check
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        if (currentIndex < 0) currentIndex = 0;
+
+        const cardWidth = cards[0].offsetWidth + 30; // width + gap
+        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+        // Update dots
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle("active", idx === currentIndex);
+        });
+      }
+
+      function nextSlide() {
+        const cardsVisible = getVisibleCount();
+        const maxIndex = totalCards - cardsVisible;
+
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+        } else {
+          currentIndex = 0; // Loop back to start
+        }
+        updateSlider();
+      }
+
+      function prevSlide() {
+        const cardsVisible = getVisibleCount();
+        const maxIndex = totalCards - cardsVisible;
+
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = maxIndex; // Loop to end
+        }
+        updateSlider();
+      }
+
+      function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+      }
+
+      // Auto Scroll Logic
+      function startAutoScroll() {
+        stopAutoScroll();
+        autoScrollTimer = setInterval(nextSlide, 1500); // 1.5 seconds
+      }
+
+      function stopAutoScroll() {
+        clearInterval(autoScrollTimer);
+      }
+
+      function resetAutoScroll() {
+        stopAutoScroll();
+        startAutoScroll();
+      }
+
+      // Event Listeners
+      nextBtn.addEventListener("click", () => {
+        nextSlide();
+        resetAutoScroll();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        prevSlide();
+        resetAutoScroll();
+      });
+
+      // Pause on hover
+      sliderWrapper.addEventListener("mouseenter", stopAutoScroll);
+      sliderWrapper.addEventListener("mouseleave", startAutoScroll);
+
+      window.addEventListener("resize", () => {
+        updateSlider();
+      });
+
+      // Initialize
+      updateSlider();
+      startAutoScroll();
+    </script>
+  </body>
+</html>
